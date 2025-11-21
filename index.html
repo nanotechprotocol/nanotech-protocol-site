@@ -6,43 +6,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Primary SEO -->
+  <meta name="title" content="Nanotech Protocol · $NANO – The future of biology is programmable." />
   <meta
     name="description"
-    content="Nanotech Protocol ($NANO) is a culture-driven meme token on Base inspired by AI-designed medicines, programmable cells, and the future of programmable biology."
+    content="Nanotech Protocol ($NANO) is a culture-driven meme token on Base inspired by AI-designed medicines, programmable cells, and the next wave of biotech."
   />
-  <meta name="keywords" content="Nanotech Protocol,NANO,Base meme coin,AI biotech token,programmable biology,crypto meme,Layer 2" />
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nanotechprotocol.com/" />
-  <meta property="og:title" content="Nanotech Protocol · $NANO — The future of biology is programmable." />
+  <meta property="og:title" content="Nanotech Protocol · $NANO – The future of biology is programmable." />
   <meta
     property="og:description"
-    content="A culture-driven meme token on Base orbiting AI-designed medicines, programmable cells, and the next wave of biotech."
+    content="A meme token orbiting programmable biology, AI-designed medicines, and nanotech narratives. Built on Base."
   />
-  <meta property="og:image" content="https://nanotechprotocol.com/MAINLOGO.png" />
+  <meta property="og:image" content="MAINLOGO.png" />
 
-  <!-- Twitter Card -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Nanotech Protocol · $NANO — The future of biology is programmable." />
+  <meta name="twitter:title" content="Nanotech Protocol · $NANO" />
   <meta
     name="twitter:description"
-    content="A culture-driven meme token on Base orbiting AI-designed medicines, programmable cells, and the next wave of biotech."
+    content="Nanotech Protocol ($NANO) – a culture layer for programmable biology, AI drug design, and on-chain memes."
   />
-  <meta name="twitter:image" content="https://nanotechprotocol.com/MAINLOGO.png" />
+  <meta name="twitter:image" content="MAINLOGO.png" />
 
   <!-- Favicon / Icons -->
-  <link rel="icon" type="image/png" href="/FAVICON.png" />
-  <link rel="apple-touch-icon" href="/FAVICON.png" />
-  <meta name="msapplication-TileImage" content="/FAVICON.png" />
+  <link rel="icon" type="image/png" href="MAINLOGO.png" />
+  <link rel="apple-touch-icon" href="MAINLOGO.png" />
+  <meta name="msapplication-TileImage" content="MAINLOGO.png" />
+  <meta name="theme-color" content="#050716" />
 
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet"
-  >
+  />
 
   <style>
     :root {
@@ -60,15 +61,14 @@
       --radius-large: 32px;
       --shadow-hero: 0 32px 60px rgba(0, 0, 0, 0.55);
       --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.4);
-
-      --nav-height: 68px;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -97,34 +97,23 @@
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(255, 143, 107, 0.25), transparent 50%),
+      background: radial-gradient(circle at 0% 0%, rgba(255, 143, 107, 0.25), transparent 50%),
         radial-gradient(circle at 100% 0%, rgba(0, 196, 255, 0.18), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(255, 111, 216, 0.18), transparent 55%),
-        #050716;
+        radial-gradient(circle at 100% 100%, rgba(255, 111, 216, 0.18), transparent 55%), #050716;
     }
 
-    /* Parallax background layers */
     .parallax-layer {
       position: fixed;
-      inset: 0;
+      inset: -20%;
       pointer-events: none;
       z-index: -1;
-      opacity: 0.7;
       mix-blend-mode: screen;
-    }
-
-    .parallax-layer.layer-1 {
-      background:
-        radial-gradient(circle at 10% 20%, rgba(255, 154, 158, 0.18), transparent 55%),
-        radial-gradient(circle at 80% 80%, rgba(0, 242, 254, 0.12), transparent 55%);
-    }
-
-    .parallax-layer.layer-2 {
-      background:
-        radial-gradient(circle at 15% 80%, rgba(255, 111, 216, 0.18), transparent 55%),
-        radial-gradient(circle at 90% 15%, rgba(0, 196, 255, 0.15), transparent 55%);
-      opacity: 0.45;
+      opacity: 0.55;
+      background: radial-gradient(circle at 20% 20%, rgba(255, 138, 60, 0.16), transparent 55%),
+        radial-gradient(circle at 80% 80%, rgba(0, 196, 255, 0.12), transparent 55%),
+        radial-gradient(circle at 50% 10%, rgba(255, 111, 216, 0.14), transparent 60%);
+      will-change: transform, opacity;
+      transition: opacity 0.4s ease-out;
     }
 
     .container {
@@ -144,6 +133,22 @@
       }
     }
 
+    /* Animations (fade-in on scroll) */
+
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity 0.6s ease-out,
+        transform 0.6s ease-out;
+      will-change: opacity, transform;
+    }
+
+    .fade-in-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* Top nav */
 
     .nav {
@@ -151,25 +156,19 @@
       top: 0;
       z-index: 40;
       backdrop-filter: blur(18px);
-      background: linear-gradient(
-        to bottom,
-        rgba(5, 7, 22, 0.98),
-        rgba(5, 7, 22, 0.9),
-        rgba(5, 7, 22, 0.0)
-      );
-      transition: transform 0.24s ease-out, background 0.24s ease-out;
+      background: linear-gradient(to bottom, rgba(5, 7, 22, 0.96), rgba(5, 7, 22, 0.9), rgba(5, 7, 22, 0));
+      transition: transform 0.22s ease-out, background 0.22s ease-out;
     }
 
-    .nav.nav--hidden {
-      transform: translateY(-110%);
+    .nav.nav-hidden {
+      transform: translateY(-100%);
     }
 
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 0;
-      min-height: var(--nav-height);
+      padding: 14px 0;
     }
 
     .logo-mark {
@@ -178,21 +177,11 @@
       gap: 10px;
     }
 
-    .logo-img-wrap {
-      width: 40px;
-      height: 40px;
-      border-radius: 14px;
-      overflow: hidden;
-      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.12), transparent 55%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+    .logo-img {
+      width: 36px;
+      height: 36px;
+      border-radius: 16px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
     }
 
     .logo-text-main {
@@ -212,7 +201,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 22px;
       font-size: 14px;
       color: var(--muted);
     }
@@ -222,136 +211,127 @@
     }
 
     .nav-links .nav-cta {
-      padding: 10px 18px;
+      padding: 9px 18px;
       border-radius: 999px;
       border: 1px solid var(--border-soft);
       font-size: 13px;
       color: #ffffff;
     }
 
-    .nav-links .nav-social {
-      font-size: 13px;
-      opacity: 0.9;
+    /* Live price badge in nav */
+
+    .nav-price {
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(8, 10, 30, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+    }
+
+    .nav-price span.label {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 10px;
+      color: var(--muted-strong);
+    }
+
+    .nav-price span.value {
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 11px;
     }
 
     /* Mobile nav */
 
-    .nav-toggle {
+    .nav-mobile-toggle {
       display: none;
-      width: 38px;
-      height: 38px;
+      width: 34px;
+      height: 34px;
       border-radius: 999px;
-      border: 1px solid var(--border-soft);
-      background: rgba(5, 7, 22, 0.7);
-      display: none;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(5, 7, 22, 0.8);
       align-items: center;
       justify-content: center;
       cursor: pointer;
     }
 
-    .hamburger,
-    .hamburger::before,
-    .hamburger::after {
-      width: 18px;
+    .nav-mobile-toggle span,
+    .nav-mobile-toggle span::before,
+    .nav-mobile-toggle span::after {
+      content: "";
+      display: block;
+      width: 16px;
       height: 2px;
       border-radius: 999px;
       background: #ffffff;
       position: relative;
-      transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+      transition:
+        transform 0.2s ease-out,
+        opacity 0.2s ease-out;
     }
 
-    .hamburger::before,
-    .hamburger::after {
-      content: "";
+    .nav-mobile-toggle span::before {
       position: absolute;
-      left: 0;
+      top: -5px;
     }
 
-    .hamburger::before {
-      top: -6px;
+    .nav-mobile-toggle span::after {
+      position: absolute;
+      top: 5px;
     }
 
-    .hamburger::after {
-      top: 6px;
+    .nav-mobile-toggle.is-open span {
+      transform: rotate(45deg);
     }
 
-    .nav-toggle.is-open .hamburger {
-      transform: translateY(0) rotate(45deg);
-    }
-
-    .nav-toggle.is-open .hamburger::before {
+    .nav-mobile-toggle.is-open span::before {
       transform: rotate(-90deg);
       top: 0;
     }
 
-    .nav-toggle.is-open .hamburger::after {
+    .nav-mobile-toggle.is-open span::after {
       opacity: 0;
     }
 
-    .mobile-nav {
+    .nav-mobile-overlay {
       position: fixed;
       inset: 0;
       z-index: 35;
-      background: radial-gradient(circle at top, rgba(0,0,0,0.45), transparent 60%),
-                  rgba(5, 7, 22, 0.96);
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), rgba(3, 7, 18, 0.98));
+      backdrop-filter: blur(26px);
       display: none;
-      flex-direction: column;
-      padding: 16px 24px 32px;
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
     }
 
-    .mobile-nav.is-open {
+    .nav-mobile-overlay.is-open {
+      display: block;
+      opacity: 1;
+    }
+
+    .nav-mobile-inner {
+      height: 100%;
+      padding: 18px 22px 26px;
       display: flex;
+      flex-direction: column;
     }
 
-    .mobile-nav-header {
+    .nav-mobile-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 32px;
+      margin-bottom: 40px;
     }
 
-    .mobile-logo-group {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .mobile-logo-img {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
-      overflow: hidden;
-      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.15), transparent 55%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .mobile-logo-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .mobile-logo-text-main {
-      font-family: "Montserrat", sans-serif;
-      font-size: 16px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .mobile-logo-tag {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-    }
-
-    .mobile-close {
+    .nav-mobile-close {
       width: 34px;
       height: 34px;
       border-radius: 999px;
-      border: 1px solid var(--border-soft);
+      border: 1px solid rgba(255, 255, 255, 0.24);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -359,20 +339,19 @@
       font-size: 18px;
     }
 
-    .mobile-nav-links {
+    .nav-mobile-links {
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 20px;
       font-size: 20px;
-      margin-top: 12px;
     }
 
-    .mobile-nav-links a {
-      color: #ffffff;
+    .nav-mobile-links a {
+      color: #e5e7f5;
     }
 
-    .mobile-nav-links a span {
-      font-size: 13px;
+    .nav-mobile-links a span {
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.18em;
       color: var(--muted-strong);
@@ -380,22 +359,17 @@
       margin-bottom: 4px;
     }
 
-    .mobile-nav-footer {
+    .nav-mobile-footer {
       margin-top: auto;
-      font-size: 13px;
+      font-size: 12px;
       color: var(--muted-strong);
     }
 
-    .mobile-nav-footer a {
-      color: var(--nano-blue);
-    }
-
-    @media (max-width: 900px) {
+    @media (max-width: 860px) {
       .nav-links {
         display: none;
       }
-
-      .nav-toggle {
+      .nav-mobile-toggle {
         display: inline-flex;
       }
     }
@@ -405,12 +379,11 @@
     .hero {
       padding-top: 40px;
       padding-bottom: 64px;
-      min-height: calc(100vh - var(--nav-height));
+      min-height: 100vh;
       display: flex;
       align-items: center;
-      background:
-        radial-gradient(circle at top left, rgba(255,154,158,0.18) 0%, transparent 40%),
-        radial-gradient(circle at bottom right, rgba(0,242,254,0.12) 0%, transparent 45%),
+      background: radial-gradient(circle at top left, rgba(255, 154, 158, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at bottom right, rgba(0, 242, 254, 0.12) 0%, transparent 45%),
         linear-gradient(135deg, #050814 0%, #090b19 35%, #111325 70%, #151527 100%);
     }
 
@@ -481,13 +454,7 @@
     }
 
     .btn-primary {
-      background: linear-gradient(
-        135deg,
-        var(--nano-orange),
-        var(--nano-pink),
-        var(--nano-magenta),
-        var(--nano-blue)
-      );
+      background: linear-gradient(135deg, var(--nano-orange), var(--nano-pink), var(--nano-magenta), var(--nano-blue));
       color: #050716;
       box-shadow: var(--shadow-soft);
     }
@@ -535,8 +502,7 @@
       width: 100%;
       max-width: 420px;
       border-radius: var(--radius-large);
-      background:
-        linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(5, 7, 22, 0.9)),
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(5, 7, 22, 0.9)),
         radial-gradient(circle at top left, rgba(255, 138, 60, 0.65), transparent 60%),
         radial-gradient(circle at bottom right, rgba(0, 196, 255, 0.5), transparent 55%);
       padding: 22px 22px 20px;
@@ -621,7 +587,8 @@
     }
 
     .contract-address {
-      font-family: "SF Mono", "Roboto Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-family: "SF Mono", "Roboto Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+        monospace;
       font-size: 11px;
       word-break: break-all;
       color: var(--offwhite);
@@ -659,73 +626,6 @@
       color: var(--muted-strong);
     }
 
-    /* Live price widget */
-
-    .price-widget {
-      margin-top: 10px;
-      padding: 10px 10px 8px;
-      border-radius: 14px;
-      background: rgba(5, 7, 22, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      font-size: 11px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .price-label {
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--muted-strong);
-      font-size: 10px;
-    }
-
-    .price-main {
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .price-sub {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .price-error {
-      color: #f97373;
-    }
-
-    /* Section divider with MAINLOGO */
-
-    .section-divider {
-      padding: 36px 0 8px;
-    }
-
-    .section-divider-inner {
-      width: 80px;
-      height: 80px;
-      border-radius: 26px;
-      margin: 0 auto;
-      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.08), transparent 65%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
-      opacity: 0;
-      transform: translateY(12px) scale(0.96);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .section-divider-inner img {
-      width: 74%;
-      height: 74%;
-      object-fit: contain;
-    }
-
-    .section-divider-inner.is-visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
     /* Feature strip */
 
     .strip {
@@ -756,6 +656,48 @@
       margin-bottom: 4px;
     }
 
+    /* Section logo separators */
+
+    .section-separator {
+      padding: 40px 0 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .section-separator-inner {
+      width: 82px;
+      height: 82px;
+      border-radius: 26px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 28px rgba(255, 111, 216, 0.45);
+      opacity: 0.7;
+      transform: translateY(0);
+      transition:
+        box-shadow 0.25s ease-out,
+        opacity 0.25s ease-out,
+        transform 0.25s ease-out;
+      will-change: transform, box-shadow, opacity;
+    }
+
+    .section-separator-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .section-separator-inner::after {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background: radial-gradient(circle at 30% 0%, rgba(255, 255, 255, 0.18), transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
     /* Generic section styles */
 
     .section-heading {
@@ -770,8 +712,7 @@
       margin-bottom: 32px;
     }
 
-    .section-eyebrow,
-    .section-eyebrow-alt {
+    .section-eyebrow {
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.18em;
@@ -843,7 +784,7 @@
       margin-bottom: 4px;
     }
 
-    /* How to buy section */
+    /* How to buy */
 
     .steps-list {
       counter-reset: step;
@@ -876,12 +817,10 @@
       color: #050716;
     }
 
-    /* Roadmap section */
+    /* Roadmap */
 
     .roadmap-section {
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,0.02) 0%, transparent 55%),
-        #050814;
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.02) 0%, transparent 55%), #050814;
       padding: 100px 0;
     }
 
@@ -898,17 +837,17 @@
     }
 
     .roadmap-phase {
-      background: rgba(15,18,32,0.7);
+      background: rgba(15, 18, 32, 0.7);
       border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       padding: 20px 22px;
       backdrop-filter: blur(12px);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
     }
 
     .roadmap-phase--done {
       border-color: rgba(56, 252, 160, 0.45);
-      box-shadow: 0 0 0 1px rgba(56, 252, 160, 0.2), 0 18px 40px rgba(0,0,0,0.6);
+      box-shadow: 0 0 0 1px rgba(56, 252, 160, 0.2), 0 18px 40px rgba(0, 0, 0, 0.6);
     }
 
     .roadmap-phase--progress {
@@ -940,7 +879,7 @@
 
     .status-dot--amber {
       background: #facc15;
-      box-shadow: 0 0 10px rgba(250,204,21,0.9);
+      box-shadow: 0 0 10px rgba(250, 204, 21, 0.9);
     }
 
     .status-dot--muted {
@@ -974,7 +913,7 @@
       left: 6px;
       top: 0;
       font-size: 1rem;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255, 255, 255, 0.4);
     }
 
     .roadmap-phase--done li::before {
@@ -1022,7 +961,6 @@
       justify-content: space-between;
       align-items: center;
       gap: 20px;
-      flex-wrap: wrap;
     }
 
     @media (max-width: 768px) {
@@ -1030,25 +968,6 @@
         flex-direction: column;
         align-items: flex-start;
       }
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      font-size: 12px;
-    }
-
-    .footer-links a {
-      color: var(--muted);
-    }
-
-    .footer-links a:hover {
-      color: #ffffff;
-    }
-
-    .section-alt {
-      background: radial-gradient(circle at top, rgba(255,255,255,0.02) 0%, transparent 55%), #050814;
     }
 
     .container.narrow {
@@ -1061,46 +980,18 @@
       opacity: 0.6;
       line-height: 1.5;
     }
-
-    /* Scroll reveal animations */
-
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .animate-on-scroll.delay-1 {
-      transition-delay: 0.1s;
-    }
-
-    .animate-on-scroll.delay-2 {
-      transition-delay: 0.2s;
-    }
-
-    .animate-on-scroll.delay-3 {
-      transition-delay: 0.3s;
-    }
-
-    .animate-on-scroll.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
   </style>
 </head>
 <body>
 <div class="page-wrapper">
-  <!-- Parallax layers -->
-  <div class="parallax-layer layer-1"></div>
-  <div class="parallax-layer layer-2"></div>
+  <!-- parallax background layer -->
+  <div class="parallax-layer" id="parallax-bg"></div>
 
   <!-- NAV -->
-  <header class="nav" id="site-nav">
+  <header class="nav" id="main-nav">
     <div class="container nav-inner">
       <div class="logo-mark">
-        <div class="logo-img-wrap">
-          <img src="/MAINLOGO.png" alt="Nanotech Protocol logo">
-        </div>
+        <img src="MAINLOGO.png" alt="Nanotech Protocol Logo" class="logo-img" />
         <div>
           <div class="logo-text-main">Nanotech Protocol</div>
           <div class="logo-tag">$NANO · Base</div>
@@ -1114,72 +1005,55 @@
         <a href="#how-to-buy">How to buy</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#community">Community</a>
-        <a class="nav-social" href="https://x.com/NanoTechToken" target="_blank" rel="noopener noreferrer">X</a>
-        <a class="nav-social" href="https://t.me/NanoTechProtocol" target="_blank" rel="noopener noreferrer">Telegram</a>
         <a class="nav-cta" href="#contract">View contract</a>
+        <a href="https://x.com/NanoTechToken" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://t.me/NanoTechProtocol" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <div class="nav-price" id="nav-price">
+          <span class="label">$NANO</span>
+          <span class="value" id="nav-price-value">Not yet tracked</span>
+        </div>
       </nav>
 
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
-        <div class="hamburger"></div>
+      <button class="nav-mobile-toggle" id="mobile-toggle" aria-label="Open menu">
+        <span></span>
       </button>
     </div>
   </header>
 
   <!-- Mobile nav overlay -->
-  <div class="mobile-nav" id="mobile-nav">
-    <div class="mobile-nav-header">
-      <div class="mobile-logo-group">
-        <div class="mobile-logo-img">
-          <img src="/MAINLOGO.png" alt="Nanotech Protocol logo">
+  <div class="nav-mobile-overlay" id="mobile-overlay">
+    <div class="nav-mobile-inner">
+      <div class="nav-mobile-header">
+        <div class="logo-mark">
+          <img src="MAINLOGO.png" alt="Nanotech Protocol Logo" class="logo-img" />
+          <div>
+            <div class="logo-text-main">Nanotech Protocol</div>
+            <div class="logo-tag">$NANO · Base</div>
+          </div>
         </div>
-        <div>
-          <div class="mobile-logo-text-main">Nanotech Protocol</div>
-          <div class="mobile-logo-tag">$NANO · Base</div>
-        </div>
+        <button class="nav-mobile-close" id="mobile-close" aria-label="Close menu">✕</button>
       </div>
-      <button class="mobile-close" id="mobile-close" aria-label="Close menu">×</button>
-    </div>
-
-    <div class="mobile-nav-links">
-      <a href="#about" data-nav-target>
-        <span>Section</span>About
-      </a>
-      <a href="#biology" data-nav-target>
-        <span>Section</span>Biology
-      </a>
-      <a href="#token" data-nav-target>
-        <span>Section</span>Token
-      </a>
-      <a href="#how-to-buy" data-nav-target>
-        <span>Section</span>How to buy
-      </a>
-      <a href="#roadmap" data-nav-target>
-        <span>Section</span>Roadmap
-      </a>
-      <a href="#community" data-nav-target>
-        <span>Section</span>Community
-      </a>
-      <a href="#contract" data-nav-target>
-        <span>On-chain</span>View contract
-      </a>
-      <a href="https://x.com/NanoTechToken" target="_blank" rel="noopener noreferrer">
-        <span>Social</span>X (Twitter)
-      </a>
-      <a href="https://t.me/NanoTechProtocol" target="_blank" rel="noopener noreferrer">
-        <span>Social</span>Telegram
-      </a>
-    </div>
-
-    <div class="mobile-nav-footer">
-      Always double-check contract addresses. <br>
-      Official site: <a href="https://nanotechprotocol.com">nanotechprotocol.com</a>
+      <div class="nav-mobile-links">
+        <a href="#about"><span>Section</span>About</a>
+        <a href="#biology"><span>Section</span>Biology</a>
+        <a href="#token"><span>Section</span>Token</a>
+        <a href="#how-to-buy"><span>Section</span>How to buy</a>
+        <a href="#roadmap"><span>Section</span>Roadmap</a>
+        <a href="#community"><span>Section</span>Community</a>
+        <a href="#contract"><span>On-chain</span>View contract</a>
+        <a href="https://x.com/NanoTechToken" target="_blank" rel="noopener noreferrer"><span>Social</span>X (Twitter)</a>
+        <a href="https://t.me/NanoTechProtocol" target="_blank" rel="noopener noreferrer"><span>Social</span>Telegram</a>
+      </div>
+      <div class="nav-mobile-footer">
+        $NANO — speculative meme token. Not financial, medical, or investment advice.
+      </div>
     </div>
   </div>
 
   <!-- HERO -->
   <section class="hero">
     <div class="container hero-grid">
-      <div class="animate-on-scroll">
+      <div class="fade-in-up">
         <div class="eyebrow">Nanotech Protocol · $NANO · Base</div>
         <h1 class="hero-heading">The future of biology is programmable.</h1>
         <p class="hero-subtitle">
@@ -1204,7 +1078,7 @@
         </div>
       </div>
 
-      <div class="hero-card-wrapper animate-on-scroll delay-1">
+      <div class="hero-card-wrapper fade-in-up">
         <div class="hero-card" id="contract">
           <div class="hero-card-top">
             <div class="pill">
@@ -1242,13 +1116,6 @@
               </button>
             </div>
           </div>
-
-          <div class="price-widget" id="price-widget">
-            <div class="price-label">Live price (approx.)</div>
-            <div class="price-main" id="price-value">Loading…</div>
-            <div class="price-sub" id="price-change">Pulling data from Dexscreener</div>
-          </div>
-
           <div class="hero-card-footer">
             <div>Deployer: community founder</div>
             <div>Renounce &amp; memes &gt; promises</div>
@@ -1258,16 +1125,9 @@
     </div>
   </section>
 
-  <!-- Divider -->
-  <div class="section-divider">
-    <div class="section-divider-inner animate-on-scroll">
-      <img src="/MAINLOGO.png" alt="Nanotech Protocol logo divider">
-    </div>
-  </div>
-
   <!-- STRIP -->
   <section class="strip">
-    <div class="container strip-inner animate-on-scroll">
+    <div class="container strip-inner fade-in-up">
       <div>
         <div class="strip-label">Fair launch</div>
         <div>No presale, no VC allocation, no secret team bags. Liquidity and vibes in the open.</div>
@@ -1283,17 +1143,17 @@
     </div>
   </section>
 
-  <!-- Divider -->
-  <div class="section-divider">
-    <div class="section-divider-inner animate-on-scroll">
-      <img src="/MAINLOGO.png" alt="Nanotech Protocol logo divider">
+  <!-- SECTION SEPARATOR 1 -->
+  <div class="section-separator">
+    <div class="section-separator-inner">
+      <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
     </div>
   </div>
 
   <!-- ABOUT -->
   <section id="about">
-    <div class="container animate-on-scroll">
-      <h2 class="section-heading">$NANO is a story about the next era of biology.</h2>
+    <div class="container fade-in-up">
+      <h2 class="section-heading">What is Nanotech Protocol?</h2>
       <p class="section-lead">
         Nanotech Protocol is a story about where biology might be headed: AI that designs molecules,
         programmable cells, and lab robots writing code for your body. $NANO is the meme layer on top
@@ -1301,39 +1161,43 @@
       </p>
 
       <div class="two-col">
-        <div class="card animate-on-scroll delay-1">
-          <div class="card-title">What it is</div>
-          <ul>
-            <li>A meme token on Base that orbits around nanotech, gene editing, and AI-powered drug design.</li>
-            <li>A hub for content: daily AI avatar updates, threads, and explainer drops on real-world biotech.</li>
-            <li>A simple, transparent contract — no stealth taxes, no weird reflections, no forced lock-ups.</li>
-          </ul>
+        <div class="fade-in-up">
+          <div class="card">
+            <div class="card-title">What it is</div>
+            <ul>
+              <li>A meme token on Base that orbits around nanotech, gene editing, and AI-powered drug design.</li>
+              <li>A hub for content: daily AI avatar updates, threads, and explainer drops on real-world biotech.</li>
+              <li>A simple, transparent contract — no stealth taxes, no weird reflections, no forced lock-ups.</li>
+            </ul>
+          </div>
         </div>
-        <div class="card animate-on-scroll delay-2">
-          <div class="card-title">What it is <em>not</em></div>
-          <ul>
-            <li>Not equity in any biotech company, lab, or protocol.</li>
-            <li>Not a promise of future products, revenue, or payouts.</li>
-            <li>Not medical advice or an investment recommendation.</li>
-          </ul>
-          <p style="margin-top:10px; color:var(--muted); font-size:13px;">
-            $NANO is a speculative digital asset. Treat it like a meme that happens to take the science seriously.
-          </p>
+        <div class="fade-in-up">
+          <div class="card">
+            <div class="card-title">What it is <em>not</em></div>
+            <ul>
+              <li>Not equity in any biotech company, lab, or protocol.</li>
+              <li>Not a promise of future products, revenue, or payouts.</li>
+              <li>Not medical advice or an investment recommendation.</li>
+            </ul>
+            <p style="margin-top:10px; color:var(--muted); font-size:13px;">
+              $NANO is a speculative digital asset. Treat it like a meme that happens to take the science seriously.
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Divider -->
-  <div class="section-divider">
-    <div class="section-divider-inner animate-on-scroll">
-      <img src="/MAINLOGO.png" alt="Nanotech Protocol logo divider">
+  <!-- SECTION SEPARATOR 2 -->
+  <div class="section-separator">
+    <div class="section-separator-inner">
+      <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
     </div>
   </div>
 
   <!-- BIOLOGY EXPLAINER -->
   <section id="biology">
-    <div class="container animate-on-scroll">
+    <div class="container fade-in-up">
       <h2 class="section-heading">Biology is becoming code.</h2>
       <p class="section-lead">
         For most of history, biology was trial and error. Now we’re watching AI models design proteins,
@@ -1342,7 +1206,7 @@
       </p>
 
       <div class="two-col">
-        <div class="card animate-on-scroll delay-1">
+        <div class="card fade-in-up">
           <div class="card-title">Ideas we orbit around</div>
           <ul>
             <li><strong>AI-designed medicines</strong> – models that propose new molecules the way GPT proposes new text.</li>
@@ -1350,7 +1214,7 @@
             <li><strong>Programmable labs</strong> – robots, automation, and cloud labs turning experiments into APIs.</li>
           </ul>
         </div>
-        <div class="card animate-on-scroll delay-2">
+        <div class="card fade-in-up">
           <div class="card-title">How $NANO connects</div>
           <ul>
             <li>Content, not cures: we amplify real research and real companies without claiming to be them.</li>
@@ -1362,16 +1226,16 @@
     </div>
   </section>
 
-  <!-- Divider -->
-  <div class="section-divider">
-    <div class="section-divider-inner animate-on-scroll">
-      <img src="/MAINLOGO.png" alt="Nanotech Protocol logo divider">
+  <!-- SECTION SEPARATOR 3 -->
+  <div class="section-separator">
+    <div class="section-separator-inner">
+      <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
     </div>
   </div>
 
   <!-- TOKEN OVERVIEW -->
   <section id="token">
-    <div class="container animate-on-scroll">
+    <div class="container fade-in-up">
       <h2 class="section-heading">$NANO token overview.</h2>
       <p class="section-lead">
         Clean, vanilla ERC-20 mechanics. The “protocol” in Nanotech Protocol is about the story, not a complicated
@@ -1379,23 +1243,23 @@
       </p>
 
       <div class="token-grid">
-        <div class="card animate-on-scroll delay-1">
+        <div class="card fade-in-up">
           <div class="token-pill">Supply</div>
           <div class="token-stat-number">100,000,000</div>
           <p style="color:var(--muted); margin-top:6px;">
             Fixed total supply of <strong>100 million NANO</strong>. 18 decimals, standard ERC-20 format.
           </p>
         </div>
-        <div class="card animate-on-scroll delay-2">
+        <div class="card fade-in-up">
           <div class="token-pill">Mechanics</div>
           <p style="color:var(--muted); margin-top:6px;">
-            • No hidden taxes or reflections<br>
+            • No hidden taxes or reflections<br />
             • Mint / burn functions exposed in the contract for transparent supply changes if the community ever
-            votes to use them<br>
+            votes to use them<br />
             • Optional anti-bot limits at launch to keep early trading sane
           </p>
         </div>
-        <div class="card animate-on-scroll delay-3">
+        <div class="card fade-in-up">
           <div class="token-pill">Control</div>
           <p style="color:var(--muted); margin-top:6px;">
             Ownership can be renounced once the community is comfortable, reducing control to pure contract rules.
@@ -1406,16 +1270,16 @@
     </div>
   </section>
 
-  <!-- Divider -->
-  <div class="section-divider">
-    <div class="section-divider-inner animate-on-scroll">
-      <img src="/MAINLOGO.png" alt="Nanotech Protocol logo divider">
+  <!-- SECTION SEPARATOR 4 -->
+  <div class="section-separator">
+    <div class="section-separator-inner">
+      <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
     </div>
   </div>
 
   <!-- HOW TO BUY -->
   <section id="how-to-buy">
-    <div class="container animate-on-scroll">
+    <div class="container fade-in-up">
       <h2 class="section-heading">How to buy $NANO on Base (high level).</h2>
       <p class="section-lead">
         This is a general flow for experienced users. Always double-check contract addresses and only use interfaces
@@ -1423,7 +1287,7 @@
       </p>
 
       <div class="two-col">
-        <div class="card animate-on-scroll delay-1">
+        <div class="card fade-in-up">
           <div class="card-title">Basic flow</div>
           <div class="steps-list">
             <div class="step-item">
@@ -1437,17 +1301,15 @@
               <strong>$NANO</strong> using the official contract address.
             </div>
             <div class="step-item">
-              Double-check that the contract address matches:<br>
-              <code style="font-size:12px;">
-                0x05570200c56b220be701bdabCbdCdB37d1eB6F51
-              </code>
+              Double-check that the contract address matches:<br />
+              <code style="font-size:12px;">0x05570200c56b220be701bdabCbdCdB37d1eB6F51</code>
             </div>
             <div class="step-item">
               Swap a small test amount first. If it looks right, adjust slippage if needed and size in carefully.
             </div>
           </div>
         </div>
-        <div class="card animate-on-scroll delay-2">
+        <div class="card fade-in-up">
           <div class="card-title">Safety reminders</div>
           <ul>
             <li>Contracts can be cloned. Only trust the official address and official links.</li>
@@ -1460,16 +1322,16 @@
     </div>
   </section>
 
-  <!-- Divider -->
-  <div class="section-divider">
-    <div class="section-divider-inner animate-on-scroll">
-      <img src="/MAINLOGO.png" alt="Nanotech Protocol logo divider">
+  <!-- SECTION SEPARATOR 5 -->
+  <div class="section-separator">
+    <div class="section-separator-inner">
+      <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
     </div>
   </div>
 
   <!-- ROADMAP -->
   <section id="roadmap" class="roadmap-section">
-    <div class="container narrow animate-on-scroll">
+    <div class="container narrow fade-in-up">
       <p class="section-eyebrow">Roadmap</p>
       <h2 class="section-heading">Where we are, where we're going.</h2>
       <p class="section-lead">
@@ -1479,7 +1341,7 @@
 
       <div class="roadmap-grid">
         <!-- Phase 1 -->
-        <div class="roadmap-phase roadmap-phase--done animate-on-scroll delay-1">
+        <div class="roadmap-phase roadmap-phase--done fade-in-up">
           <div class="roadmap-phase-header">
             <div class="roadmap-phase-tag">Phase 1</div>
             <div class="roadmap-phase-status">
@@ -1496,7 +1358,7 @@
         </div>
 
         <!-- Phase 2 -->
-        <div class="roadmap-phase roadmap-phase--progress animate-on-scroll delay-2">
+        <div class="roadmap-phase roadmap-phase--progress fade-in-up">
           <div class="roadmap-phase-header">
             <div class="roadmap-phase-tag">Phase 2</div>
             <div class="roadmap-phase-status">
@@ -1513,7 +1375,7 @@
         </div>
 
         <!-- Phase 3 -->
-        <div class="roadmap-phase animate-on-scroll delay-1">
+        <div class="roadmap-phase fade-in-up">
           <div class="roadmap-phase-header">
             <div class="roadmap-phase-tag">Phase 3</div>
             <div class="roadmap-phase-status">
@@ -1530,7 +1392,7 @@
         </div>
 
         <!-- Phase 4 -->
-        <div class="roadmap-phase animate-on-scroll delay-2">
+        <div class="roadmap-phase fade-in-up">
           <div class="roadmap-phase-header">
             <div class="roadmap-phase-tag">Phase 4</div>
             <div class="roadmap-phase-status">
@@ -1554,16 +1416,16 @@
     </div>
   </section>
 
-  <!-- Divider -->
-  <div class="section-divider">
-    <div class="section-divider-inner animate-on-scroll">
-      <img src="/MAINLOGO.png" alt="Nanotech Protocol logo divider">
+  <!-- SECTION SEPARATOR 6 (last, above community) -->
+  <div class="section-separator">
+    <div class="section-separator-inner">
+      <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
     </div>
   </div>
 
   <!-- COMMUNITY / SOCIALS -->
   <section id="community">
-    <div class="container animate-on-scroll">
+    <div class="container fade-in-up">
       <h2 class="section-heading">Join the experiment.</h2>
       <p class="section-lead">
         If programmable biology, AI drug design, and wild on-chain memes all live in your brain at once,
@@ -1602,195 +1464,168 @@
       <div>
         Nanotech Protocol · $NANO — The future of biology is programmable.
       </div>
-      <div class="footer-links">
-        <a href="https://x.com/NanoTechToken" target="_blank" rel="noopener noreferrer">X</a>
-        <a href="https://t.me/NanoTechProtocol" target="_blank" rel="noopener noreferrer">Telegram</a>
-        <span>Contract: 0x05570200c56b220be701bdabCbdCdB37d1eB6F51</span>
-      </div>
       <div>
         This website and token are for entertainment and community purposes only.
         Nothing here is financial, medical, or investment advice.
       </div>
     </div>
   </footer>
-
 </div>
 
 <script>
   // Copy contract button
-  document.addEventListener('DOMContentLoaded', function () {
-    var btn = document.getElementById('copy-btn');
-    var addressEl = document.getElementById('nano-address');
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.getElementById("copy-btn");
+    var addressEl = document.getElementById("nano-address");
 
     if (btn && addressEl && navigator.clipboard) {
-      btn.addEventListener('click', function () {
+      btn.addEventListener("click", function () {
         var text = addressEl.textContent.trim();
-        navigator.clipboard.writeText(text).then(function () {
-          var original = btn.textContent;
-          btn.textContent = 'Copied!';
-          setTimeout(function () {
-            btn.textContent = original;
-          }, 1600);
-        }).catch(function () {
-          alert('Copy failed. Please copy manually:\n' + text);
-        });
+        navigator.clipboard
+          .writeText(text)
+          .then(function () {
+            var original = btn.textContent;
+            btn.textContent = "Copied!";
+            setTimeout(function () {
+              btn.textContent = original;
+            }, 1600);
+          })
+          .catch(function () {
+            alert("Copy failed. Please copy manually:\n" + text);
+          });
       });
     }
-  });
 
-  // Mobile nav toggle
-  (function () {
-    var navToggle = document.getElementById('nav-toggle');
-    var mobileNav = document.getElementById('mobile-nav');
-    var mobileClose = document.getElementById('mobile-close');
+    // Simple fade-in-on-scroll using IntersectionObserver
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
 
-    function closeNav() {
-      mobileNav.classList.remove('is-open');
-      navToggle.classList.remove('is-open');
+    document.querySelectorAll(".fade-in-up").forEach(function (el) {
+      observer.observe(el);
+    });
+
+    // Mobile nav toggle
+    var mobileToggle = document.getElementById("mobile-toggle");
+    var mobileOverlay = document.getElementById("mobile-overlay");
+    var mobileClose = document.getElementById("mobile-close");
+
+    function closeMobile() {
+      mobileOverlay.classList.remove("is-open");
+      mobileToggle.classList.remove("is-open");
+      document.body.style.overflow = "";
     }
 
-    if (navToggle && mobileNav) {
-      navToggle.addEventListener('click', function () {
-        var isOpen = mobileNav.classList.toggle('is-open');
-        navToggle.classList.toggle('is-open', isOpen);
+    if (mobileToggle && mobileOverlay) {
+      mobileToggle.addEventListener("click", function () {
+        var isOpen = mobileOverlay.classList.toggle("is-open");
+        mobileToggle.classList.toggle("is-open", isOpen);
+        document.body.style.overflow = isOpen ? "hidden" : "";
       });
     }
 
     if (mobileClose) {
-      mobileClose.addEventListener('click', closeNav);
+      mobileClose.addEventListener("click", closeMobile);
     }
 
-    // Close when clicking links
-    mobileNav.querySelectorAll('[data-nav-target]').forEach(function (link) {
-      link.addEventListener('click', function () {
-        closeNav();
-      });
+    mobileOverlay?.addEventListener("click", function (e) {
+      if (e.target === mobileOverlay) closeMobile();
     });
-  })();
 
-  // Smart sticky nav: hide on scroll down, show on scroll up
-  (function () {
-    var nav = document.getElementById('site-nav');
-    var lastScrollY = window.scrollY;
+    document.querySelectorAll(".nav-mobile-links a").forEach(function (link) {
+      link.addEventListener("click", closeMobile);
+    });
 
-    window.addEventListener('scroll', function () {
+    // Smart sticky nav: hide on scroll down, show on scroll up
+    var nav = document.getElementById("main-nav");
+    var lastScroll = window.scrollY;
+
+    window.addEventListener("scroll", function () {
       var current = window.scrollY;
+      var delta = current - lastScroll;
 
-      if (current > lastScrollY + 6 && current > 80) {
+      if (current > 80 && delta > 0) {
         // scrolling down
-        nav.classList.add('nav--hidden');
-      } else if (current < lastScrollY - 6) {
+        nav.classList.add("nav-hidden");
+      } else {
         // scrolling up
-        nav.classList.remove('nav--hidden');
+        nav.classList.remove("nav-hidden");
       }
 
-      lastScrollY = current;
+      lastScroll = current <= 0 ? 0 : current;
     });
-  })();
 
-  // Parallax scroll effect for background layers
-  (function () {
-    var layers = document.querySelectorAll('.parallax-layer');
+    // Parallax background and logo glow
+    var parallaxBg = document.getElementById("parallax-bg");
+    var separators = document.querySelectorAll(".section-separator-inner");
 
-    if (!layers.length) return;
+    function handleScrollEffects() {
+      var scrollY = window.scrollY || window.pageYOffset;
+      var vh = window.innerHeight;
 
-    window.addEventListener('scroll', function () {
-      var scroll = window.scrollY || window.pageYOffset;
-      var factor1 = scroll * 0.0007;
-      var factor2 = scroll * 0.0011;
+      if (parallaxBg) {
+        var factor = scrollY * -0.03;
+        parallaxBg.style.transform = "translate3d(0," + factor + "px,0)";
+        parallaxBg.style.opacity = 0.55 + Math.cos(scrollY / 800) * 0.08;
+      }
 
-      layers.forEach(function (layer, index) {
-        var factor = index === 0 ? factor1 : factor2;
-        layer.style.transform = 'translate3d(0,' + (-scroll * factor) + 'px,0)';
+      separators.forEach(function (el) {
+        var rect = el.getBoundingClientRect();
+        var center = rect.top + rect.height / 2;
+        var dist = center - vh / 2;
+        var norm = Math.max(-1, Math.min(1, dist / (vh / 2)));
+
+        var translate = -norm * 16; // hover up/down
+        var glow = 30 - Math.abs(norm) * 18; // more glow near center
+        var opacity = 0.45 + (1 - Math.abs(norm)) * 0.55;
+
+        el.style.transform = "translate3d(0," + translate + "px,0)";
+        el.style.boxShadow = "0 0 " + glow + "px rgba(255, 111, 216, 0.55)";
+        el.style.opacity = opacity;
       });
-    });
-  })();
-
-  // Scroll reveal animations
-  (function () {
-    var animated = document.querySelectorAll('.animate-on-scroll');
-
-    if (!('IntersectionObserver' in window) || !animated.length) {
-      animated.forEach(function (el) {
-        el.classList.add('is-visible');
-      });
-      document
-        .querySelectorAll('.section-divider-inner')
-        .forEach(function (d) { d.classList.add('is-visible'); });
-      return;
     }
 
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
+    window.addEventListener("scroll", handleScrollEffects);
+    window.addEventListener("resize", handleScrollEffects);
+    handleScrollEffects();
+
+    // Live price widget (placeholder using Dexscreener-style API)
+    var priceValueEl = document.getElementById("nav-price-value");
+
+    async function fetchPrice() {
+      if (!priceValueEl) return;
+      try {
+        // Replace with a real endpoint once $NANO is listed/tracked
+        // Example for Dexscreener:
+        // const res = await fetch("https://api.dexscreener.com/latest/dex/tokens/0x05570200c56b220be701bdabCbdCdB37d1eB6F51");
+        // const data = await res.json();
+        // const pair = data.pairs?.[0];
+        // const price = pair ? Number(pair.priceUsd).toFixed(6) : null;
+
+        // For now, keep a graceful placeholder:
+        var price = null;
+
+        if (price) {
+          priceValueEl.textContent = "$" + price + " USD";
+        } else {
+          priceValueEl.textContent = "Not yet tracked";
         }
-      });
-    }, {
-      threshold: 0.15
-    });
-
-    animated.forEach(function (el) {
-      observer.observe(el);
-    });
-
-    document
-      .querySelectorAll('.section-divider-inner')
-      .forEach(function (divider) {
-        observer.observe(divider);
-      });
-  })();
-
-  // Live price widget using Dexscreener
-  (function () {
-    var priceValue = document.getElementById('price-value');
-    var priceChange = document.getElementById('price-change');
-    if (!priceValue || !priceChange) return;
-
-    var API_URL = 'https://api.dexscreener.com/latest/dex/tokens/0x05570200c56b220be701bdabCbdCdB37d1eB6F51';
-
-    function updatePrice() {
-      fetch(API_URL)
-        .then(function (res) { return res.json(); })
-        .then(function (data) {
-          if (!data || !data.pairs || !data.pairs.length) {
-            priceValue.textContent = 'Not yet tracked';
-            priceChange.textContent = 'Once live on Dexscreener, this widget will auto-update.';
-            priceValue.classList.add('price-error');
-            return;
-          }
-
-          var pair = data.pairs[0];
-          var price = pair.priceUsd ? Number(pair.priceUsd) : null;
-          var change = pair.priceChange && pair.priceChange.h24 ? Number(pair.priceChange.h24) : null;
-
-          if (price != null) {
-            priceValue.textContent = '$' + price.toFixed(price < 0.01 ? 6 : 4) + ' USD';
-          } else {
-            priceValue.textContent = 'n/a';
-          }
-
-          if (change != null) {
-            var sign = change > 0 ? '+' : '';
-            priceChange.textContent = sign + change.toFixed(2) + '% (24h)';
-            priceChange.style.color = change >= 0 ? '#4ade80' : '#f97373';
-          } else {
-            priceChange.textContent = '24h change: n/a';
-          }
-        })
-        .catch(function () {
-          priceValue.textContent = 'Unavailable';
-          priceChange.textContent = 'Dexscreener data not reachable right now.';
-          priceValue.classList.add('price-error');
-        });
+      } catch (e) {
+        priceValueEl.textContent = "Not yet tracked";
+      }
     }
 
-    // Initial fetch & refresh every 60 seconds
-    updatePrice();
-    setInterval(updatePrice, 60000);
-  })();
+    fetchPrice();
+    setInterval(fetchPrice, 60000); // refresh every 60s
+  });
 </script>
-
 </body>
 </html>
