@@ -2,1177 +2,1175 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>NanoTech Protocol · $NANO</title>
+  <title>Nanotech Protocol · $NANO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Primary SEO -->
-  <meta name="title" content="NanoTech Protocol · $NANO – The future of biology is programmable." />
-  <meta name="description" content="NanoTech Protocol ($NANO) is the culture layer for AI biology, nanotech, and programmable medicine." />
+  <meta name="title" content="Nanotech Protocol · $NANO – The future of biology is programmable." />
+  <meta
+    name="description"
+    content="Nanotech Protocol ($NANO) is a culture-driven meme token on Base inspired by AI-designed medicines, programmable cells, and the next wave of biotech."
+  />
 
-  <!-- OG -->
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="NanoTech Protocol" />
-  <meta property="og:title" content="NanoTech Protocol · $NANO" />
-  <meta property="og:description" content="Front-running programmable biology, AI-designed medicine, and nanotech culture." />
+  <meta property="og:url" content="https://nanotechprotocol.com/" />
+  <meta property="og:title" content="Nanotech Protocol · $NANO – The future of biology is programmable." />
+  <meta
+    property="og:description"
+    content="A meme token orbiting programmable biology, AI-designed medicines, and nanotech narratives. Built on Base."
+  />
   <meta property="og:image" content="MAINLOGO.png" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="NanoTech Protocol · $NANO" />
-  <meta name="twitter:description" content="For the ones who see the future early — AI, nanotech, programmable medicine." />
+  <meta name="twitter:title" content="Nanotech Protocol · $NANO" />
+  <meta
+    name="twitter:description"
+    content="Nanotech Protocol ($NANO) – a culture layer for programmable biology, AI drug design, and on-chain memes."
+  />
   <meta name="twitter:image" content="MAINLOGO.png" />
 
-  <link rel="icon" href="MAINLOGO.png" />
+  <!-- Favicon / Icons -->
+  <link rel="icon" type="image/png" href="MAINLOGO.png" />
   <link rel="apple-touch-icon" href="MAINLOGO.png" />
+  <meta name="msapplication-TileImage" content="MAINLOGO.png" />
+  <meta name="theme-color" content="#050716" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
-    body {
-      margin:0;
-      padding:0;
-      background:#050716;
-      color:white;
-      font-family: Inter, sans-serif;
-    }
-    a { color:inherit; text-decoration:none; }
+    :root {
+      --nano-orange: #ff8a3c;
+      --nano-pink: #ff4f81;
+      --nano-magenta: #ff6fd8;
+      --nano-blue: #00c4ff;
+      --navy: #050716;
+      --offwhite: #f7f6fc;
+      --muted: #c3c4d4;
+      --muted-strong: #7a7c96;
+      --card-bg: #121324;
+      --border-soft: rgba(255, 255, 255, 0.10);
 
-    /* Containers & layout */
+      --radius-large: 34px;
+      --shadow-hero: 0 32px 60px rgba(0, 0, 0, 0.55);
+      --shadow-soft: 0 22px 46px rgba(0, 0, 0, 0.48);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--navy);
+      color: white;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout helpers */
+
+    .page-wrapper {
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      background: radial-gradient(circle at 0% 0%, rgba(255, 143, 107, 0.22), transparent 50%),
+        radial-gradient(circle at 100% 0%, rgba(0, 196, 255, 0.15), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(255, 111, 216, 0.15), transparent 55%), #050716;
+    }
+
+    .parallax-layer {
+      position: fixed;
+      inset: -20%;
+      pointer-events: none;
+      z-index: -1;
+      mix-blend-mode: screen;
+      opacity: 0.55;
+      background: radial-gradient(circle at 20% 20%, rgba(255, 138, 60, 0.14), transparent 55%),
+        radial-gradient(circle at 80% 80%, rgba(0, 196, 255, 0.1), transparent 55%),
+        radial-gradient(circle at 50% 10%, rgba(255, 111, 216, 0.12), transparent 60%);
+      will-change: transform, opacity;
+      transition: opacity 0.4s ease-out;
+    }
+
     .container {
-      width:100%;
-      max-width:1180px;
-      margin:0 auto;
-      padding:0 24px;
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
     }
 
     section {
-      padding:80px 0;
+      padding: 80px 0;
     }
 
-    @media (max-width:768px){
-      section { padding:56px 0; }
+    @media (max-width: 768px) {
+      section {
+        padding: 56px 0;
+      }
     }
 
     /* Fade-in on scroll */
+
     .fade-in-up {
-      opacity:0;
-      transform:translateY(16px);
-      transition:opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .fade-in-up.is-visible {
-      opacity:1;
-      transform:translateY(0);
+      opacity: 0;
+      transform: translateY(20px);
+      transition:
+        opacity 0.6s ease-out,
+        transform 0.6s ease-out;
+      will-change: opacity, transform;
     }
 
-    /* NAV */
-    .nav {
-      position:sticky;
-      top:0;
-      z-index:40;
-      backdrop-filter:blur(18px);
-      background:rgba(5,7,22,0.86);
-      transition:transform 0.22s ease-out;
+    .fade-in-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
-    .nav-hidden {
-      transform:translateY(-100%);
+    /* NAVIGATION */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: rgba(5, 7, 22, 0.85);
+      transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+      will-change: transform;
+    }
+
+    .nav.nav-hidden {
+      transform: translateY(-100%);
     }
 
     .nav-inner {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:14px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
     }
 
-    .logo-mark { display:flex; align-items:center; gap:10px; }
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
     .logo-img {
-      width:38px; height:38px;
-      border-radius:14px;
-      box-shadow:0 10px 32px rgba(0,0,0,0.6);
+      width: 40px;
+      height: 40px;
+      border-radius: 16px;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
     }
 
     .logo-text-main {
-      font-family:Montserrat, sans-serif;
-      font-size:19px;
-      text-transform:uppercase;
-      letter-spacing:0.12em;
+      font-family: "Montserrat", sans-serif;
+      font-size: 19px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
     }
 
     .logo-tag {
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:0.18em;
-      opacity:0.7;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-top: 1px;
     }
 
     .nav-links {
-      display:flex;
-      gap:22px;
-      color:#c3c4d4;
-      font-size:14px;
-      align-items:center;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 14px;
+      color: var(--muted);
     }
-    .nav-links a:hover { color:white; }
 
-    /* Upgraded NAV price badge (Apple minimal) */
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .nav-links .nav-cta {
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      font-size: 13px;
+      color: #ffffff;
+      background: rgba(255,255,255,0.04);
+    }
+
+    /* Live price badge refinement */
+
     .nav-price {
-      padding:4px 10px;
-      border-radius:12px;
-      background:rgba(255,255,255,0.06);
-      backdrop-filter:blur(18px);
-      border:1px solid rgba(255,255,255,0.12);
-      font-size:11px;
-      display:inline-flex;
-      gap:6px;
-      align-items:center;
+      font-size: 11px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(8, 10, 30, 0.92);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--muted);
+      font-weight: 500;
     }
-    .nav-price .label {
-      opacity:0.6;
-      text-transform:uppercase;
-      letter-spacing:0.12em;
-      font-size:10px;
+
+    .nav-price span.label {
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-size: 10px;
+      color: var(--muted-strong);
     }
-    .nav-price .value {
-      font-weight:500;
-      color:white;
+
+    .nav-price span.value {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 11px;
+    }
+
+    /* Mobile nav */
+
+    .nav-mobile-toggle {
+      display: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(5, 7, 22, 0.82);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .nav-mobile-toggle span,
+    .nav-mobile-toggle span::before,
+    .nav-mobile-toggle span::after {
+      content: "";
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: #ffffff;
+      position: relative;
+      transition:
+        transform 0.2s ease-out,
+        opacity 0.2s ease-out;
+    }
+
+    .nav-mobile-toggle span::before {
+      position: absolute;
+      top: -6px;
+    }
+
+    .nav-mobile-toggle span::after {
+      position: absolute;
+      top: 6px;
+    }
+
+    .nav-mobile-toggle.is-open span {
+      transform: rotate(45deg);
+    }
+
+    .nav-mobile-toggle.is-open span::before {
+      transform: rotate(-90deg);
+      top: 0;
+    }
+
+    .nav-mobile-toggle.is-open span::after {
+      opacity: 0;
+    }
+
+    .nav-mobile-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 35;
+      background: rgba(5, 7, 22, 0.96);
+      backdrop-filter: blur(26px);
+      display: none;
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+    }
+
+    .nav-mobile-overlay.is-open {
+      display: block;
+      opacity: 1;
+    }
+
+    .nav-mobile-inner {
+      height: 100%;
+      padding: 20px 24px 30px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-mobile-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+
+    .nav-mobile-close {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .nav-mobile-links {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      font-size: 22px;
+    }
+
+    .nav-mobile-links a {
+      color: #e5e7f5;
+      font-weight: 500;
+    }
+
+    .nav-mobile-footer {
+      margin-top: auto;
+      font-size: 13px;
+      opacity: 0.7;
+      color: var(--muted-strong);
+      line-height: 1.45;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        display: none;
+      }
+      .nav-mobile-toggle {
+        display: inline-flex;
+      }
     }
 
     /* HERO */
+
     .hero {
-      padding-top:60px;
-      padding-bottom:80px;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(255,143,107,0.22), transparent 50%),
-        radial-gradient(circle at 100% 0%, rgba(0,196,255,0.18), transparent 55%),
-        #050716;
+      padding-top: 50px;
+      padding-bottom: 80px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: radial-gradient(circle at top left, rgba(255, 154, 158, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at bottom right, rgba(0, 242, 254, 0.12) 0%, transparent 45%),
+        linear-gradient(135deg, #050814 0%, #090b19 35%, #111325 70%, #151527 100%);
     }
 
     .hero-grid {
-      display:grid;
-      grid-template-columns:1.1fr 0.9fr;
-      column-gap:48px;
-      align-items:center;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      column-gap: 48px;
+      align-items: center;
     }
 
-    @media (max-width:900px){
-      .hero-grid { grid-template-columns:1fr; row-gap:40px; }
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        row-gap: 48px;
+      }
     }
 
     .eyebrow {
-      font-size:12px;
-      letter-spacing:0.18em;
-      text-transform:uppercase;
-      color:#00c4ff;
-      opacity:0.9;
-      margin-bottom:16px;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--nano-blue);
+      margin-bottom: 16px;
+      opacity: 0.9;
     }
 
     .hero-heading {
-      font-family:Montserrat, sans-serif;
-      font-size:54px;
-      margin:0;
-      line-height:1.05;
+      font-family: "Montserrat", sans-serif;
+      font-size: 57px;
+      line-height: 1.05;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: -0.5px;
     }
 
-    @media (max-width:768px){
-      .hero-heading { font-size:40px; }
+    @media (max-width: 768px) {
+      .hero-heading {
+        font-size: 42px;
+      }
     }
 
     .hero-subtitle {
-      font-size:18px;
-      opacity:0.75;
-      max-width:540px;
-      margin-top:18px;
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 540px;
+      margin-top: 20px;
     }
 
     .hero-cta-row {
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-top:30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+      align-items: center;
     }
 
-    /* Buttons */
-    .btn-primary, .btn-secondary {
-      padding:12px 24px;
-      border-radius:999px;
-      font-size:15px;
-      font-weight:600;
-      border:none;
-      cursor:pointer;
-      display:inline-flex;
-      align-items:center;
-    }
     .btn-primary {
-      background:white;
-      color:#050716;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--nano-orange), var(--nano-pink), var(--nano-magenta), var(--nano-blue));
+      color: #050716;
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.55);
+      transition: all 0.18s ease-out;
     }
+
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.025);
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.65);
+    }
+
     .btn-secondary {
-      background:transparent;
-      border:1px solid rgba(255,255,255,0.22);
-      color:white;
+      padding: 13px 26px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: rgba(255,255,255,0.04);
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
     }
 
+    .hero-note {
+      margin-top: 18px;
+      font-size: 13px;
+      opacity: 0.75;
+      color: var(--muted-strong);
+    }
 
-<!-- Segment 3: Updated HERO widget & section separators -->
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="fade-in-up">
-      <div class="eyebrow">Nanotech Protocol · $NANO · Base</div>
-      <h1 class="hero-heading">The future of biology is programmable.</h1>
-      <p class="hero-subtitle">
-        Nanotech Protocol ($NANO) explores the frontier where AI-designed medicines, programmable cells,
-        and on‑chain culture collide. A meme for those who see the biotech wave coming and refuse to wait.
+</head>
+<body>
+<div class="page-wrapper">
+  <!-- parallax background layer -->
+  <div class="parallax-layer" id="parallax-bg"></div>
+
+  <!-- NAV -->
+  <header class="nav" id="main-nav">
+    <div class="container nav-inner">
+      <div class="logo-mark">
+        <img src="MAINLOGO.png" alt="Nanotech Protocol Logo" class="logo-img" />
+        <div>
+          <div class="logo-text-main">Nanotech Protocol</div>
+          <div class="logo-tag">$NANO · Base</div>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#biology">Biology</a>
+        <a href="#token">Token</a>
+        <a href="#how-to-buy">Buy</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#community">Community</a>
+        <a class="nav-cta" href="#contract">View contract</a>
+        <a href="https://x.com/NanoTechToken" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://t.me/NanoTechProtocol" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <div class="nav-price" id="nav-price">
+          <span class="label">$NANO</span>
+          <span class="value" id="nav-price-value">Not yet tracked</span>
+        </div>
+      </nav>
+
+      <button class="nav-mobile-toggle" id="mobile-toggle" aria-label="Open menu">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile nav overlay -->
+  <div class="nav-mobile-overlay" id="mobile-overlay">
+    <div class="nav-mobile-inner">
+      <div class="nav-mobile-header">
+        <div class="logo-mark">
+          <img src="MAINLOGO.png" alt="Nanotech Protocol Logo" class="logo-img" />
+          <div>
+            <div class="logo-text-main">Nanotech Protocol</div>
+            <div class="logo-tag">$NANO · Base</div>
+          </div>
+        </div>
+        <button class="nav-mobile-close" id="mobile-close" aria-label="Close menu">✕</button>
+      </div>
+
+      <div class="nav-mobile-links">
+        <a href="#about">About</a>
+        <a href="#biology">Biology</a>
+        <a href="#token">Token</a>
+        <a href="#how-to-buy">Buy</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#community">Community</a>
+        <a href="#contract">View contract</a>
+        <a href="https://x.com/NanoTechToken" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
+        <a href="https://t.me/NanoTechProtocol" target="_blank" rel="noopener noreferrer">Telegram</a>
+      </div>
+
+      <div class="nav-mobile-footer">
+        $NANO — speculative meme token. Not financial, medical, or investment advice.
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="fade-in-up">
+        <div class="eyebrow">Nanotech Protocol · $NANO · Base</div>
+        <h1 class="hero-heading">The future of biology is programmable.</h1>
+        <p class="hero-subtitle">
+          Nanotech Protocol ($NANO) is a culture-driven meme token inspired by AI-designed medicines,
+          programmable cells, and the next wave of biotech. No promises, no utility guarantees —
+          just a narrative about where science is headed and a community that loves talking about it.
+        </p>
+
+        <div class="hero-cta-row">
+          <a
+            href="https://app.uniswap.org/swap?inputCurrency=ETH&outputCurrency=0x05570200c56b220be701bdabCbdCdB37d1eB6F51&chain=base"
+            class="btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Buy $NANO
+          </a>
+          <a href="#roadmap" class="btn-secondary">View the roadmap</a>
+        </div>
+
+        <div class="hero-note">
+          ⚠️ <strong>Speculative meme token.</strong> Nothing here is financial, medical, or investment advice.
+          Never risk more than you can afford to lose.
+        </div>
+      </div>
+      <div class="hero-card-wrapper fade-in-up">
+        <div class="hero-card" id="contract">
+          <div class="hero-card-top">
+            <div class="pill">
+              <span class="status-dot"></span>
+              <span>$NANO · LIVE ON BASE</span>
+            </div>
+            <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted-strong);">
+              Meme · Biotech · AI
+            </div>
+          </div>
+
+          <div class="hero-card-mid">
+            <div class="stat-row">
+              <div class="stat-label">Total supply</div>
+              <div class="stat-value">100,000,000 NANO</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-label">Decimals</div>
+              <div class="stat-value">18</div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-label">Network</div>
+              <div class="stat-value">Base (L2)</div>
+            </div>
+          </div>
+
+          <div class="contract-block">
+            <div style="font-size:10px; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted-strong);">
+              Official contract address
+            </div>
+
+            <div class="contract-row">
+              <div class="contract-address" id="nano-address">
+                0x05570200c56b220be701bdabCbdCdB37d1eB6F51
+              </div>
+              <button class="btn-tiny" id="copy-btn" type="button">
+                <span>⧉</span> Copy
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-card-footer">
+            <div>Deployer: community founder</div>
+            <div>Renounce &amp; memes &gt; promises</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <section class="strip">
+    <div class="container strip-inner fade-in-up">
+      <div>
+        <div class="strip-label">Fair launch</div>
+        <div>No presale, no VC allocation, no secret team bags. Liquidity and vibes in the open.</div>
+      </div>
+      <div>
+        <div class="strip-label">Fixed supply</div>
+        <div>Hard-capped at <strong>100,000,000 NANO</strong>. Mint/burn only via transparent contract calls.</div>
+      </div>
+      <div>
+        <div class="strip-label">Built on Base</div>
+        <div>Fast, low fees, and plugged into the on-chain culture that loves experimenting with new narratives.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION SEPARATOR 1 -->
+  <div class="section-separator">
+    <div class="section-separator-inner">
+      <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container fade-in-up">
+      <h2 class="section-heading">What is Nanotech Protocol?</h2>
+      <p class="section-lead">
+        Nanotech Protocol is a story about where biology might be headed: AI that designs molecules,
+        programmable cells, and lab robots writing code for your body. $NANO is the meme layer on top
+        of that idea — a simple ERC-20 token with clean mechanics, not a biotech product.
       </p>
-      <div class="hero-cta-row">
-        <a href="https://app.uniswap.org/swap?inputCurrency=ETH&outputCurrency=0x05570200c56b220be701bdabCbdCdB37d1eB6F51&chain=base"
-           class="btn-primary" target="_blank">Buy $NANO</a>
-        <a href="#manifesto" class="btn-secondary">Read Manifesto</a>
-      </div>
-      <div class="hero-note">
-        ⚠️ <strong>Speculative meme token.</strong> Nothing on this site is financial or medical advice.
-      </div>
-    </div>
 
-    <div class="hero-card-wrapper fade-in-up">
-      <div class="hero-card premium-card" id="contract">
-        <div class="hero-card-top">
-          <div class="pill premium-pill">
-            <span class="status-dot"></span>
-            <span>$NANO · LIVE ON BASE</span>
-          </div>
-          <div class="hero-card-tag">Meme · Biotech · AI</div>
-        </div>
-
-        <div class="hero-card-mid premium-mid">
-          <div class="stat-row">
-            <div class="stat-label">Total supply</div>
-            <div class="stat-value">100,000,000 NANO</div>
-          </div>
-          <div class="stat-row">
-            <div class="stat-label">Decimals</div>
-            <div class="stat-value">18</div>
-          </div>
-          <div class="stat-row">
-            <div class="stat-label">Network</div>
-            <div class="stat-value">Base (L2)</div>
+      <div class="two-col">
+        <div class="fade-in-up">
+          <div class="card">
+            <div class="card-title">What it is</div>
+            <ul>
+              <li>A meme token on Base that orbits around nanotech, gene editing, and AI-powered drug design.</li>
+              <li>A hub for content: daily AI avatar updates, threads, and explainer drops on real-world biotech.</li>
+              <li>A simple, transparent contract — no stealth taxes, no weird reflections, no forced lock-ups.</li>
+            </ul>
           </div>
         </div>
 
-        <div class="contract-block premium-contract">
-          <div class="contract-header">Contract address</div>
-          <div class="contract-row">
-            <div class="contract-address" id="nano-address">0x05570200c56b220be701bdabCbdCdB37d1eB6F51</div>
-            <button class="btn-tiny" id="copy-btn"><span>⧉</span> Copy</button>
+        <div class="fade-in-up">
+          <div class="card">
+            <div class="card-title">What it is <em>not</em></div>
+            <ul>
+              <li>Not equity in any biotech company, lab, or protocol.</li>
+              <li>Not a promise of future products, revenue, or payouts.</li>
+              <li>Not medical advice or an investment recommendation.</li>
+            </ul>
+            <p style="margin-top:10px; color:var(--muted); font-size:13px;">
+              $NANO is a speculative digital asset. Treat it like a meme that happens to take the science seriously.
+            </p>
           </div>
         </div>
-
-        <div class="hero-card-footer premium-footer">
-          <div>Deployer: community founder</div>
-          <div>Renounced ethos</div>
-        </div>
       </div>
     </div>
-  </div>
-</section>
-
-<div class="section-separator">
-  <div class="section-separator-inner">
-    <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
-  </div>
-</div>
-
-
-<!-- Segment 4: Manifesto Section -->
-<section id="manifesto">
-  <div class="container fade-in-up">
-    <p class="section-eyebrow">Manifesto</p>
-    <h2 class="section-heading">We Are Early. Earlier Than Anyone Realizes.</h2>
-    <p class="section-lead">
-      Nanotech Protocol exists for the ones who see what’s coming before the world does.
-      AI-designed medicines. Programmable cells. Nanotech-level precision. Biology becoming software.
-      Most people won’t understand this shift until it's already reshaping everything.
-      We’re not waiting. We’re front-running the future ourselves.
-    </p>
-
-    <div class="card">
-      <div class="card-title">Why $NANO exists</div>
-      <ul>
-        <li><strong>The biotech wave is inevitable.</strong> Whether crypto likes it or not, AI-biology will dwarf every industry.</li>
-        <li><strong>Culture always moves first.</strong> Every major technological shift begins with a story, a symbol, a meme.</li>
-        <li><strong>$NANO is that cultural signal.</strong> A way for early believers to gather, build awareness, and ride the wave before it arrives.</li>
-      </ul>
+  </section>
+  <!-- SECTION SEPARATOR 2 -->
+  <div class="section-separator">
+    <div class="section-separator-inner">
+      <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
     </div>
-
-    <div class="two-col" style="margin-top:40px;">
-      <div class="card fade-in-up">
-        <div class="card-title">What we believe</div>
-        <ul>
-          <li>Biology is becoming programmable like code.</li>
-          <li>AI labs are the new “factories.”</li>
-          <li>Gene editing and nanotech will become everyday tools.</li>
-          <li>Crypto culture accelerates narratives faster than institutions ever can.</li>
-          <li>The earliest believers always capture the biggest asymmetry.</li>
-        </ul>
-      </div>
-
-      <div class="card fade-in-up">
-        <div class="card-title">What this movement is</div>
-        <ul>
-          <li>A community of people tracking the frontier of science.</li>
-          <li>A meme token reflecting a real technological revolution.</li>
-          <li>A hub of AI-generated research, avatars, threads, and content.</li>
-          <li>A cultural layer for the future of biology.</li>
-        </ul>
-      </div>
-    </div>
-
-    <p style="margin-top:40px; color:var(--muted); font-size:16px; max-width:760px;">
-      We don’t need permission from biotech VCs, labs, or institutions.
-      We don’t wait for the world to validate the thesis.
-      We create the momentum ourselves—through culture, narrative, and presence.
-      This is our way of getting early exposure to the greatest wave of the century.
-    </p>
-
   </div>
-</section>
 
-<div class="section-separator">
-  <div class="section-separator-inner">
-    <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
-  </div>
-</div>
+  <!-- BIOLOGY EXPLAINER -->
+  <section id="biology">
+    <div class="container fade-in-up">
+      <h2 class="section-heading">Biology is becoming code.</h2>
+      <p class="section-lead">
+        For most of history, biology was trial and error. Now we’re watching AI models design proteins,
+        CRISPR tools rewrite DNA, and lab robots run experiments like scripts. Nanotech Protocol celebrates
+        that shift — the moment biology starts to look and feel programmable.
+      </p>
 
-<!-- Segment 5: Updated 'What is Nanotech Protocol?' Section -->
-<section id="about">
-  <div class="container fade-in-up">
-    <h2 class="section-heading">What is Nanotech Protocol?</h2>
-    <p class="section-lead">
-      Nanotech Protocol is the cultural spark for a scientific revolution.
-      AI-designed medicines, CRISPR-level precision, and nanotech engineering will reshape the world—
-      but culture, memes, and narrative always move first. $NANO is where early believers gather.
-    </p>
-
-    <div class="two-col">
-      <div class="fade-in-up">
-        <div class="card">
-          <div class="card-title">What it is</div>
+      <div class="two-col">
+        <div class="card fade-in-up">
+          <div class="card-title">Ideas we orbit around</div>
           <ul>
-            <li>A meme token built around the coming wave of AI biology and programmable nanotech.</li>
-            <li>A narrative engine: AI avatars, biotech explainers, visual drops, and frontier content.</li>
-            <li>A community for people tracking the most explosive sector of the next decade.</li>
-            <li>A clean, simple ERC‑20 token—no hidden taxes, no weird mechanics, no gimmicks.</li>
+            <li><strong>AI-designed medicines</strong> – models that propose new molecules the way GPT proposes new text.</li>
+            <li><strong>Gene editing &amp; nanotech</strong> – tools that tweak cells like they’re tiny hardware.</li>
+            <li><strong>Programmable labs</strong> – robots, automation, and cloud labs turning experiments into APIs.</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in-up">
+          <div class="card-title">How $NANO connects</div>
+          <ul>
+            <li>Content, not cures: we amplify real research and real companies without claiming to be them.</li>
+            <li>Memes as on-ramps: turning complex biotech stories into threads, visuals,
+  <!-- SECTION SEPARATOR 2 -->
+  <div class="section-separator">
+    <div class="section-separator-inner">
+      <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
+    </div>
+  </div>
+
+  <!-- BIOLOGY EXPLAINER -->
+  <section id="biology">
+    <div class="container fade-in-up">
+      <h2 class="section-heading">Biology is becoming code.</h2>
+      <p class="section-lead">
+        For most of history, biology was trial and error. Now we’re watching AI models design proteins,
+        CRISPR tools rewrite DNA, and lab robots run experiments like scripts. Nanotech Protocol celebrates
+        that shift — the moment biology starts to look and feel programmable.
+      </p>
+
+      <div class="two-col">
+        <div class="card fade-in-up">
+          <div class="card-title">Ideas we orbit around</div>
+          <ul>
+            <li><strong>AI-designed medicines</strong> – models that propose new molecules the way GPT proposes new text.</li>
+            <li><strong>Gene editing &amp; nanotech</strong> – tools that tweak cells like they’re tiny hardware.</li>
+            <li><strong>Programmable labs</strong> – robots, automation, and cloud labs turning experiments into APIs.</li>
+          </ul>
+        </div>
+
+        <div class="card fade-in-up">
+          <div class="card-title">How $NANO connects</div>
+          <ul>
+            <li>Content, not cures: we amplify real research and real companies without claiming to be them.</li>
+            <li>Memes as on-ramps: turning complex biotech stories into threads, visuals, and on-chain culture.</li>
+            <li>Community-driven: ideas, collaborations, and experiments bubble up from holders and fans.</li>
           </ul>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="fade-in-up">
-        <div class="card">
-          <div class="card-title">What it is <em>not</em></div>
-          <ul>
-            <li>Not equity in a biotech company or scientific project.</li>
-            <li>Not a claim on revenue, cures, or real-world products.</li>
-            <li>Not medical advice or investment instruction.</li>
-            <li>Not pretending to be the science—just celebrating and tracking it.</li>
-          </ul>
-          <p style="margin-top:10px; color:var(--muted); font-size:13px;">
-            $NANO is a speculative digital asset. It’s about culture, not lab coats.
+  <!-- SECTION SEPARATOR 3 -->
+  <div class="section-separator">
+    <div class="section-separator-inner">
+      <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
+    </div>
+  </div>
+
+  <!-- TOKEN OVERVIEW -->
+  <section id="token">
+    <div class="container fade-in-up">
+      <h2 class="section-heading">$NANO token overview.</h2>
+      <p class="section-lead">
+        Clean, vanilla ERC-20 mechanics. The “protocol” in Nanotech Protocol is about the story,
+        not a complicated on-chain machine.
+      </p>
+
+      <div class="token-grid">
+        <div class="card fade-in-up">
+          <div class="token-pill">Supply</div>
+          <div class="token-stat-number">100,000,000</div>
+          <p style="color:var(--muted); margin-top:6px;">
+            Fixed total supply of <strong>100 million NANO</strong>. 18 decimals, standard ERC-20.
+          </p>
+        </div>
+
+        <div class="card fade-in-up">
+          <div class="token-pill">Mechanics</div>
+          <p style="color:var(--muted); margin-top:6px;">
+            • No hidden taxes or reflections<br />
+            • Mint / burn functions exposed transparently<br />
+            • Optional anti-bot limits at launch only
+          </p>
+        </div>
+
+        <div class="card fade-in-up">
+          <div class="token-pill">Control</div>
+          <p style="color:var(--muted); margin-top:6px;">
+            Ownership may be renounced once comfortable.  
+            Until then, settings exist only for fairness — not to trap or tax holders.
           </p>
         </div>
       </div>
     </div>
-
-    <p style="margin-top:30px; color:var(--muted); max-width:700px;">
-      Nanotech Protocol bridges two worlds: the cutting edge of biotechnology and the speed of crypto culture.
-      The science is real. The meme is the on-ramp. And the community is the catalyst.
-    </p>
-  </div>
-</section>
-
-<div class="section-separator">
-  <div class="section-separator-inner">
-    <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
-  </div>
-</div>
-
-<!-- Segment 6: Biology Section Updated -->
-<section id="biology">
-  <div class="container fade-in-up">
-    <h2 class="section-heading">Biology is becoming code.</h2>
-    <p class="section-lead">
-      For thousands of years, biology was observation and trial-and-error. Now it’s computation.
-      AI models design proteins. Robots run experiments. CRISPR tools rewrite DNA like a text file.
-      This is the moment where life becomes programmable—and we’re here for the front-row view.
-    </p>
-
-    <div class="two-col">
-      <div class="card fade-in-up">
-        <div class="card-title">Ideas we orbit around</div>
-        <ul>
-          <li><strong>AI-designed medicines</strong> — models generating new molecules with the same ease GPT generates text.</li>
-          <li><strong>Gene editing & nanotech</strong> — precision engineering of cells, tissues, and biological systems.</li>
-          <li><strong>Automated cloud labs</strong> — experiments executed like software, turning biology into deployable code.</li>
-          <li><strong>Self-assembling materials</strong> — nanoscale structures that grow, repair, and evolve.</li>
-        </ul>
-      </div>
-
-      <div class="card fade-in-up">
-        <div class="card-title">Why $NANO cares</div>
-        <ul>
-          <li>Because biotech is about to become the biggest sector on Earth.</li>
-          <li>Because culture always arrives before institutions understand the size of a shift.</li>
-          <li>Because memes can accelerate awareness faster than scientific papers.</li>
-          <li>Because this frontier belongs to the curious, not the gatekeepers.</li>
-        </ul>
-      </div>
-    </div>
-
-    <p style="margin-top:28px; color:var(--muted); max-width:700px;">
-      Nanotech Protocol doesn’t pretend to be the science. It amplifies it.
-      We track the research, showcase the breakthroughs, and turn complex concepts into digestible culture.
-      This is where high-level biotech meets the speed of crypto.
-    </p>
-  </div>
-</section>
-
-<div class="section-separator">
-  <div class="section-separator-inner">
-    <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
-  </div>
-</div>
-
-<!-- Segment 7: Upgraded Tokenomics Section -->
-<section id="token">
-  <div class="container fade-in-up">
-    <h2 class="section-heading">$NANO Token Overview</h2>
-    <p class="section-lead">
-      Clean, transparent, premium. $NANO isn’t pretending to be a biotech product—
-      it’s a cultural artifact built to anchor a movement around programmable biology.
-    </p>
-
-    <div class="token-grid">
-      <div class="card fade-in-up">
-        <div class="token-pill">Fixed Supply</div>
-        <div class="token-stat-number">100,000,000</div>
-        <p style="color:var(--muted); margin-top:6px;">
-          A hard-capped total supply. No hidden mints, no silent emissions.
-          Simple, verifiable, immutable once renounced.
-        </p>
-      </div>
-
-      <div class="card fade-in-up">
-        <div class="token-pill">Mechanics</div>
-        <p style="color:var(--muted); margin-top:6px;">
-          • Standard ERC‑20 on Base<br />
-          • No reflections, taxes, or trick mechanics<br />
-          • Supply change tools visible, optional, and community‑governed<br />
-          • Launch protections designed only for fairness, not control
-        </p>
-      </div>
-
-      <div class="card fade-in-up">
-        <div class="token-pill">Philosophy</div>
-        <p style="color:var(--muted); margin-top:6px;">
-          $NANO is not a promise—it’s a signal.
-          A shared belief that biotech + AI will define the next century,
-          and culture will shape the narrative long before institutions do.
-        </p>
-      </div>
+  </section>
+  <!-- SECTION SEPARATOR 4 -->
+  <div class="section-separator">
+    <div class="section-separator-inner">
+      <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
     </div>
   </div>
-</section>
 
-<div class="section-separator">
-  <div class="section-separator-inner">
-    <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
-  </div>
-</div>
-
-<!-- Segment 8: Updated How to Buy Section -->
-<section id="how-to-buy">
-  <div class="container fade-in-up">
-    <h2 class="section-heading">How to Buy $NANO on Base</h2>
-    <p class="section-lead">
-      A clean, simple guide for anyone joining the experiment. Always verify addresses, always double-check links.
-    </p>
-
-    <div class="two-col">
-      <div class="card fade-in-up">
-        <div class="card-title">Quick Guide</div>
-        <div class="steps-list">
-          <div class="step-item">
-            Get ETH from a centralized exchange or another chain.
-          </div>
-          <div class="step-item">
-            Bridge ETH to <strong>Base</strong> using the official Base bridge or a reputable third-party bridge.
-          </div>
-          <div class="step-item">
-            Open Uniswap on Base and select <strong>$NANO</strong> using the official contract address.
-          </div>
-          <div class="step-item">
-            Verify the contract address:<br />
-            <code style="font-size:12px;">0x05570200c56b220be701bdabCbdCdB37d1eB6F51</code>
-          </div>
-          <div class="step-item">
-            Start with a test transaction. Then adjust slippage (if needed) and scale your position carefully.
-          </div>
-        </div>
-      </div>
-
-      <div class="card fade-in-up">
-        <div class="card-title">Safety Checklist</div>
-        <ul>
-          <li>Never trust DMs—admins will never message you first, ever.</li>
-          <li>Only trust the official contract address from multiple verified sources.</li>
-          <li>If something feels off, stop immediately and reassess.</li>
-          <li>Assume all meme tokens can go to zero—including this one. Never overexpose.</li>
-          <li>Bookmark official links; never search for them manually on Google.</li>
-        </ul>
-      </div>
-    </div>
-
-    <p style="margin-top:24px; color:var(--muted); font-size:13px; max-width:700px;">
-      $NANO is a speculative community token. No promises, no guarantees, no expectations.  
-      Treat this as entertainment with a brain—and always protect your wallet first.
-    </p>
-  </div>
-</section>
-
-<div class="section-separator">
-  <div class="section-separator-inner">
-    <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
-  </div>
-</div>
-
-<!-- Segment 9: Updated Roadmap -->
-<section id="roadmap" class="roadmap-section">
-  <div class="container narrow fade-in-up">
-    <p class="section-eyebrow">Roadmap</p>
-    <h2 class="section-heading">Where We're Going</h2>
-    <p class="section-lead">
-      Not a corporate roadmap — a cultural trajectory. This is where $NANO travels as the frontier of AI x biotech accelerates.
-    </p>
-
-    <div class="roadmap-grid">
-
-      <div class="roadmap-phase roadmap-phase--done fade-in-up">
-        <div class="roadmap-phase-header">
-          <div class="roadmap-phase-tag">Phase 1</div>
-          <div class="roadmap-phase-status">
-            <span class="status-dot"></span> Completed
-          </div>
-        </div>
-        <h3>Ignition</h3>
-        <ul>
-          <li>Token deployed on Base</li>
-          <li>100,000,000 fixed supply</li>
-          <li>Website + branding established</li>
-          <li>Manifesto & narrative foundation</li>
-        </ul>
-      </div>
-
-      <div class="roadmap-phase roadmap-phase--progress fade-in-up">
-        <div class="roadmap-phase-header">
-          <div class="roadmap-phase-tag">Phase 2</div>
-          <div class="roadmap-phase-status">
-            <span class="status-dot status-dot--amber"></span> In Progress
-          </div>
-        </div>
-        <h3>Signal Expansion</h3>
-        <ul>
-          <li>Daily AI-biotech content drops</li>
-          <li>X (Twitter) & Telegram amplification</li>
-          <li>Core early-holders community</li>
-          <li>First narrative push across crypto circles</li>
-        </ul>
-      </div>
-
-      <div class="roadmap-phase fade-in-up">
-        <div class="roadmap-phase-header">
-          <div class="roadmap-phase-tag">Phase 3</div>
-          <div class="roadmap-phase-status">
-            <span class="status-dot status-dot--muted"></span> Upcoming
-          </div>
-        </div>
-        <h3>Market Presence</h3>
-        <ul>
-          <li>Liquidity expansion on Base</li>
-          <li>DEX pair tracking (Dexscreener, etc.)</li>
-          <li>Community-driven marketing waves</li>
-          <li>Potential submissions to CMC/Coingecko</li>
-        </ul>
-      </div>
-
-      <div class="roadmap-phase fade-in-up">
-        <div class="roadmap-phase-header">
-          <div class="roadmap-phase-tag">Phase 4</div>
-          <div class="roadmap-phase-status">
-            <span class="status-dot status-dot--muted"></span> Future
-          </div>
-        </div>
-        <h3>Frontier Culture</h3>
-        <ul>
-          <li>Deeper biotech & AI research integration</li>
-          <li>Media assets, visuals, and AI avatars</li>
-          <li>On-chain experiments & community proposals</li>
-          <li>$NANO as a cultural layer for programmable biology</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <p class="legal-text">
-      The roadmap is directional, not contractual. Everything is subject to change, adaptation, or evolution.
-      $NANO is a speculative meme token. Treat it as high-conviction fun, not financial advice.
-    </p>
-  </div>
-</section>
-
-<div class="section-separator">
-  <div class="section-separator-inner">
-    <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
-  </div>
-</div>
-
-<!-- Segment 10: Updated Community Section -->
-<section id="community">
-  <div class="container fade-in-up">
-    <h2 class="section-heading">Join the Movement</h2>
-    <p class="section-lead">
-      If the future of programmable biology, AI-designed medicine, and frontier tech resonates with you —
-      you’re already part of the culture $NANO is building.
-    </p>
-
-    <div class="card">
-      <div class="card-title">Official Channels</div>
-      <p style="color:var(--muted); font-size:14px;">
-        These are the only verified links. Bookmark them. Never trust random DMs or search results.
+  <!-- HOW TO BUY -->
+  <section id="how-to-buy">
+    <div class="container fade-in-up">
+      <h2 class="section-heading">How to buy $NANO on Base (high level).</h2>
+      <p class="section-lead">
+        This is a general flow for experienced users. Always verify contract addresses and only use
+        interfaces you trust personally.
       </p>
 
-      <div class="social-row">
-        <a class="social-pill" href="https://x.com/NanoTechToken" target="_blank" rel="noopener noreferrer">
-          <span class="icon"></span>
-          X (Twitter) · <span>@NanoTechToken</span>
-        </a>
+      <div class="two-col">
+        <div class="card fade-in-up">
+          <div class="card-title">Basic flow</div>
+          <div class="steps-list">
+            <div class="step-item">
+              Get ETH on a centralized exchange or another chain.
+            </div>
 
-        <a class="social-pill" href="https://t.me/NanoTechProtocol" target="_blank" rel="noopener noreferrer">
-          <span class="icon"></span>
-          Telegram · <span>t.me/NanoTechProtocol</span>
-        </a>
+            <div class="step-item">
+              Bridge ETH to the <strong>Base</strong> network using a reputable bridge or the official Base bridge.
+            </div>
+
+            <div class="step-item">
+              Connect your wallet to a Base-compatible DEX (e.g. Uniswap on Base) and search for
+              <strong>$NANO</strong> using the official contract address.
+            </div>
+
+            <div class="step-item">
+              Double-check the contract:<br />
+              <code style="font-size:12px;">0x05570200c56b220be701bdabCbdCdB37d1eB6F51</code>
+            </div>
+
+            <div class="step-item">
+              Swap a small test amount first. Adjust slippage if needed and scale in carefully.
+            </div>
+          </div>
+        </div>
+
+        <div class="card fade-in-up">
+          <div class="card-title">Safety reminders</div>
+          <ul>
+            <li>Contracts can be cloned. Always verify addresses.</li>
+            <li>No one will ever ask for your seed phrase — if they do, it's a scam.</li>
+            <li>Meme coins are volatile. Be mentally prepared for 100% downside risk.</li>
+            <li>Nothing about $NANO guarantees future liquidity, listings, or price.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION SEPARATOR 5 -->
+  <div class="section-separator">
+    <div class="section-separator-inner">
+      <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
+    </div>
+  </div>
+  <!-- ROADMAP -->
+  <section id="roadmap" class="roadmap-section">
+    <div class="container narrow fade-in-up">
+      <p class="section-eyebrow">Roadmap</p>
+      <h2 class="section-heading">Where we are, where we're going.</h2>
+      <p class="section-lead">
+        This is not a corporate Gantt chart. It’s a simple view of what’s already shipped
+        and what the community is exploring next with $NANO.
+      </p>
+
+      <div class="roadmap-grid">
+
+        <!-- Phase 1 -->
+        <div class="roadmap-phase roadmap-phase--done fade-in-up">
+          <div class="roadmap-phase-header">
+            <div class="roadmap-phase-tag">Phase 1</div>
+            <div class="roadmap-phase-status">
+              <span class="status-dot"></span> Completed
+            </div>
+          </div>
+          <h3>Foundation</h3>
+          <ul>
+            <li>Contract deployed on Base</li>
+            <li>Total supply: 100,000,000 NANO</li>
+            <li>nanotechprotocol.com live</li>
+            <li>Brand, tagline &amp; visuals locked in</li>
+          </ul>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="roadmap-phase roadmap-phase--progress fade-in-up">
+          <div class="roadmap-phase-header">
+            <div class="roadmap-phase-tag">Phase 2</div>
+            <div class="roadmap-phase-status">
+              <span class="status-dot status-dot--amber"></span> In progress
+            </div>
+          </div>
+          <h3>Signal &amp; awareness</h3>
+          <ul>
+            <li>Daily AI / nanotech content drops</li>
+            <li>X (Twitter) and Telegram launch</li>
+            <li>First core community of early holders</li>
+            <li>Collabs with AI / biotech-aligned creators</li>
+          </ul>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="roadmap-phase fade-in-up">
+          <div class="roadmap-phase-header">
+            <div class="roadmap-phase-tag">Phase 3</div>
+            <div class="roadmap-phase-status">
+              <span class="status-dot status-dot--muted"></span> Upcoming
+            </div>
+          </div>
+          <h3>Liquidity &amp; trading</h3>
+          <ul>
+            <li>Seed liquidity on a Base DEX</li>
+            <li>Test buys / sells &amp; public launch</li>
+            <li>Dexscreener / DEX tools tracking</li>
+            <li>CoinGecko / CMC submissions (no guarantees)</li>
+          </ul>
+        </div>
+
+        <!-- Phase 4 -->
+        <div class="roadmap-phase fade-in-up">
+          <div class="roadmap-phase-header">
+            <div class="roadmap-phase-tag">Phase 4</div>
+            <div class="roadmap-phase-status">
+              <span class="status-dot status-dot--muted"></span> Future
+            </div>
+          </div>
+          <h3>Expansion &amp; experiments</h3>
+          <ul>
+            <li>Deeper biotech / AI research threads</li>
+            <li>On-chain experiments &amp; community proposals</li>
+            <li>Potential nano / AI-bio themed NFTs or artifacts</li>
+            <li>Growing $NANO into the culture layer for programmable biology</li>
+          </ul>
+        </div>
+
       </div>
 
-      <p style="margin-top:18px; font-size:13px; color:var(--muted); max-width:720px;">
-        The community is early, focused, and aligned.  
-        We amplify real biotech and AI breakthroughs, create narrative momentum,
-        and ride the edge of culture where science meets speculation.
+      <p class="legal-text">
+        Roadmaps are aspirational, not contractual. Items may change, be delayed, or never
+        happen. $NANO is a speculative meme token — treat it as such.
       </p>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="section-separator">
-  <div class="section-separator-inner">
-    <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
+  <!-- SECTION SEPARATOR 6 -->
+  <div class="section-separator">
+    <div class="section-separator-inner">
+      <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
+    </div>
   </div>
+  <!-- COMMUNITY / SOCIALS -->
+  <section id="community">
+    <div class="container fade-in-up">
+      <h2 class="section-heading">Join the experiment.</h2>
+      <p class="section-lead">
+        If programmable biology, AI drug design, and wild on-chain memes all live in your brain at once,
+        you’re exactly who $NANO is for.
+      </p>
+
+      <div class="card">
+        <div class="card-title">Official social links</div>
+        <p style="color:var(--muted); font-size:14px;">
+          Drop into the channels below for updates. Always verify you’re following the real accounts 
+          from multiple sources before trusting any link.
+        </p>
+
+        <div class="social-row">
+          <a class="social-pill" href="https://x.com/NanoTechToken" target="_blank" rel="noopener noreferrer">
+            <span class="icon"></span>
+            X (Twitter) · <span>@NanoTechToken</span>
+          </a>
+
+          <a class="social-pill" href="https://t.me/NanoTechProtocol" target="_blank" rel="noopener noreferrer">
+            <span class="icon"></span>
+            Telegram · <span>t.me/NanoTechProtocol</span>
+          </a>
+        </div>
+
+        <p style="margin-top:18px; font-size:13px; color:var(--muted);">
+          Tip: always compare contract addresses and cross-check announcements between channels. 
+          If something feels off, assume it’s fake and protect your wallet first.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-row">
+      <div>
+        Nanotech Protocol · $NANO — The future of biology is programmable.
+      </div>
+      <div>
+        This website and token are for entertainment and community purposes only.
+        Nothing here is financial, medical, or investment advice.
+      </div>
+    </div>
+  </footer>
 </div>
 
-<!-- Segment 11: Updated Premium Footer -->
-<footer>
-  <div class="container footer-row">
-    <div>
-      Nanotech Protocol · $NANO — A cultural layer for the age of programmable biology.
-    </div>
-    <div>
-      Speculative meme token. No financial, medical, or investment advice.
-      Always verify links and protect your wallet.
-    </div>
-  </div>
-</footer>
-
-<!-- Segment 12: Global Consistency + Final JS Enhancements -->
+<!-- JAVASCRIPT -->
 <script>
-// Smooth contract copy feedback, parallax, fade-in, and smart nav already included.
-// This segment adds minor polish and ensures no JS errors occur if elements are missing.
+  // Copy contract button
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.getElementById("copy-btn");
+    var addressEl = document.getElementById("nano-address");
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Defensive query selectors
-  const nav = document.getElementById("main-nav");
-  const priceValueEl = document.getElementById("nav-price-value");
-  const separators = document.querySelectorAll(".section-separator-inner");
-
-  // Enhanced scroll detection
-  let lastScroll = window.scrollY;
-  window.addEventListener("scroll", () => {
-    const current = window.scrollY;
-    const delta = current - lastScroll;
-
-    if (current > 80 && delta > 0) {
-      nav?.classList.add("nav-hidden");
-    } else {
-      nav?.classList.remove("nav-hidden");
+    if (btn && addressEl && navigator.clipboard) {
+      btn.addEventListener("click", function () {
+        var text = addressEl.textContent.trim();
+        navigator.clipboard.writeText(text).then(function () {
+          var original = btn.textContent;
+          btn.textContent = "Copied!";
+          setTimeout(function () {
+            btn.textContent = original;
+          }, 1600);
+        }).catch(function () {
+          alert("Copy failed. Please copy manually:\\n" + text);
+        });
+      });
     }
 
-    lastScroll = current <= 0 ? 0 : current;
-  });
+    // Fade-in-on-scroll (IntersectionObserver)
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, 
+      { threshold: 0.12 }
+    );
 
-  // Improved glow + separator smooth animation fallback
-  separators.forEach(el => {
-    el.style.transition = "box-shadow 0.3s ease-out, transform 0.3s ease-out, opacity 0.3s ease-out";
-  });
+    document.querySelectorAll(".fade-in-up").forEach(function (el) {
+      observer.observe(el);
+    });
 
-  // Better price placeholder refresh handling
-  async function updatePrice() {
-    if (!priceValueEl) return;
-    try {
-      priceValueEl.textContent = "Not yet tracked";
-    } catch {
-      priceValueEl.textContent = "Not yet tracked";
+    // Mobile nav toggle
+    var mobileToggle = document.getElementById("mobile-toggle");
+    var mobileOverlay = document.getElementById("mobile-overlay");
+    var mobileClose = document.getElementById("mobile-close");
+
+    function closeMobile() {
+      mobileOverlay.classList.remove("is-open");
+      mobileToggle.classList.remove("is-open");
+      document.body.style.overflow = "";
     }
-  }
 
-  updatePrice();
-  setInterval(updatePrice, 60000);
-});
+    if (mobileToggle && mobileOverlay) {
+      mobileToggle.addEventListener("click", function () {
+        var isOpen = mobileOverlay.classList.toggle("is-open");
+        mobileToggle.classList.toggle("is-open", isOpen);
+        document.body.style.overflow = isOpen ? "hidden" : "";
+      });
+    }
+
+    if (mobileClose) {
+      mobileClose.addEventListener("click", closeMobile);
+    }
+
+    mobileOverlay?.addEventListener("click", function (e) {
+      if (e.target === mobileOverlay) closeMobile();
+    });
+
+    document.querySelectorAll(".nav-mobile-links a").forEach(function (link) {
+      link.addEventListener("click", closeMobile);
+    });
+
+    // Smart sticky nav: hide on scroll down, show on scroll up
+    var nav = document.getElementById("main-nav");
+    var lastScroll = window.scrollY;
+
+    window.addEventListener("scroll", function () {
+      var current = window.scrollY;
+      var delta = current - lastScroll;
+
+      if (current > 80 && delta > 0) {
+        nav.classList.add("nav-hidden");
+      } else {
+        nav.classList.remove("nav-hidden");
+      }
+
+      lastScroll = current <= 0 ? 0 : current;
+    });
+
+    // Parallax background + section separator glow refinement
+    var parallaxBg = document.getElementById("parallax-bg");
+    var separators = document.querySelectorAll(".section-separator-inner");
+
+    var smoothScroll = 0;
+    var targetScroll = window.scrollY || window.pageYOffset;
+
+    function smoothUpdate() {
+      smoothScroll += (targetScroll - smoothScroll) * 0.08;
+
+      var vh = window.innerHeight;
+
+      if (parallaxBg) {
+        var factor = smoothScroll * -0.03;
+        parallaxBg.style.transform = "translate3d(0," + factor + "px,0)";
+        parallaxBg.style.opacity = 0.55 + Math.cos(smoothScroll / 800) * 0.08;
+      }
+
+      separators.forEach(function (el) {
+        var rect = el.getBoundingClientRect();
+        var center = rect.top + rect.height / 2;
+        var dist = center - vh / 2;
+        var norm = Math.max(-1, Math.min(1, dist / (vh / 2)));
+
+        var translate = -norm * 16;
+        var glow = 26 - Math.abs(norm) * 14;
+        var opacity = 0.55 + (1 - Math.abs(norm)) * 0.45;
+
+        el.style.transform = "translate3d(0," + translate + "px,0)";
+        el.style.boxShadow = "0 0 " + glow + "px rgba(255, 111, 216, 0.55)";
+        el.style.opacity = opacity;
+      });
+
+      requestAnimationFrame(smoothUpdate);
+    }
+
+    window.addEventListener("scroll", function () {
+      targetScroll = window.scrollY || window.pageYOffset;
+    });
+
+    window.addEventListener("resize", function () {
+      targetScroll = window.scrollY || window.pageYOffset;
+    });
+
+    requestAnimationFrame(smoothUpdate);
+
+    // Live price widget placeholder
+    var priceValueEl = document.getElementById("nav-price-value");
+
+    async function fetchPrice() {
+      if (!priceValueEl) return;
+
+      try {
+        var price = null; // placeholder until listings exist
+        if (price) {
+          priceValueEl.textContent = "$" + price + " USD";
+        } else {
+          priceValueEl.textContent = "Not yet tracked";
+        }
+      } catch (e) {
+        priceValueEl.textContent = "Not yet tracked";
+      }
+    }
+
+    fetchPrice();
+    setInterval(fetchPrice, 60000);
+
+  });
 </script>
 
-<!-- Segment 13: Ultra-Polish – Micro Animations, Hover States, Gradient Refinement -->
-<style>
-/* Subtle hover upgrades for cards */
-.card {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 24px 48px rgba(0,0,0,0.55);
-}
-
-/* Smooth hover for social pills */
-.social-pill {
-  transition: background 0.25s ease, transform 0.25s ease;
-}
-.social-pill:hover {
-  background: rgba(255,255,255,0.06);
-  transform: translateY(-2px);
-}
-
-/* Premium button polish */
-.btn-primary, .btn-secondary {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.btn-secondary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(255,255,255,0.08);
-}
-
-/* Nav links fade on hover */
-.nav-links a {
-  transition: color 0.2s ease, opacity 0.2s ease;
-}
-.nav-links a:hover {
-  opacity: 1;
-  color: #ffffff;
-}
-
-/* Section separators enhanced glow */
-.section-separator-inner {
-  transition: box-shadow 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
-}
-.section-separator-inner:hover {
-  box-shadow: 0 0 46px rgba(255,111,216,0.75);
-  opacity: 1;
-  transform: translateY(-4px);
-}
-
-/* Logo hover polish */
-.logo-mark:hover .logo-text-main {
-  opacity: 0.9;
-}
-
-/* Gradient refinement: subtle smoother blends */
-.page-wrapper {
-  background: radial-gradient(circle at 0% 0%, rgba(255,143,107,0.22), transparent 55%),
-              radial-gradient(circle at 100% 0%, rgba(0,196,255,0.16), transparent 60%),
-              radial-gradient(circle at 100% 100%, rgba(255,111,216,0.16), transparent 60%),
-              #050716;
-}
-
-/* Hero gradient refinement */
-.hero {
-  background: radial-gradient(circle at top left, rgba(255, 154, 158, 0.16) 0%, transparent 45%),
-              radial-gradient(circle at bottom right, rgba(0, 242, 254, 0.14) 0%, transparent 50%),
-              linear-gradient(135deg, #050814 0%, #090b19 30%, #111325 65%, #151527 100%);
-}
-
-/* Soft fade for nav on scroll return */
-.nav {
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-/* Tiny hover bob for the hero card */
-.hero-card {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.hero-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 32px 60px rgba(0,0,0,0.65);
-}
-</style>
-
-<!-- Segment 14: Final QA – Spacing, Alignment, Responsive Refinements -->
-<style>
-/* Ensure consistent section spacing on all devices */
-section {
-  padding-top: 80px;
-  padding-bottom: 80px;
-}
-@media (max-width: 768px) {
-  section {
-    padding-top: 60px;
-    padding-bottom: 60px;
-  }
-}
-
-/* Align two-col layout more cleanly on mobile */
-.two-col {
-  gap: 36px;
-}
-@media (max-width: 900px) {
-  .two-col {
-    gap: 28px;
-  }
-}
-
-/* Improve readability on smaller screens */
-.section-lead {
-  line-height: 1.65;
-}
-
-/* Hero title line-height refinement */
-.hero-heading {
-  line-height: 1.08;
-}
-
-/* Fix slight misalignment of hero card on tablets */
-@media (max-width: 1024px) and (min-width: 768px) {
-  .hero-card-wrapper {
-    justify-content: center;
-  }
-}
-
-/* Token grid spacing refinement */
-.token-grid {
-  gap: 24px;
-}
-@media (max-width: 900px) {
-  .token-grid {
-    gap: 20px;
-  }
-}
-
-/* Roadmap spacing adjustments */
-.roadmap-grid {
-  gap: 26px;
-}
-.roadmap-phase {
-  padding: 22px 24px;
-}
-
-/* Footer alignment improvements */
-.footer-row {
-  align-items: flex-start;
-}
-@media (max-width: 768px) {
-  .footer-row {
-    align-items: flex-start;
-    text-align: left;
-  }
-}
-
-/* Improve contract address block spacing */
-.contract-block {
-  padding: 12px 12px 10px;
-}
-
-/* Slightly increase spacing above & below section separators */
-.section-separator {
-  padding-top: 48px;
-  padding-bottom: 32px;
-}
-
-/* Ensure container width is perfect for large screens */
-.container {
-  max-width: 1180px;
-}
-
-/* Ensure logo doesn’t stretch oddly on mobile */
-.logo-img {
-  width: 36px;
-  height: 36px;
-}
-
-/* Improve nav price badge readability */
-.nav-price {
-  padding: 6px 12px;
-}
-
-/* Improve readability of card lists */
-.card ul {
-  line-height: 1.55;
-}
-
-/* Ensure hero grid spacing is symmetrical */
-.hero-grid {
-  column-gap: 52px;
-}
-@media (max-width: 900px) {
-  .hero-grid {
-    row-gap: 42px;
-  }
-}
-</style>
-
-<!-- Segment 15: Premium Typography & Color Balance Refinements -->
-<style>
-/* Typography: elevate hierarchy */
-h1, h2, h3, .section-heading {
-  font-weight: 700;
-  letter-spacing: -0.015em;
-}
-
-.section-lead {
-  font-size: 1.12rem;
-  color: rgba(247,246,252,0.82);
-}
-
-/* Improve paragraph readability */
-p {
-  line-height: 1.65;
-}
-
-/* Adjust muted text for better contrast */
-:root {
-  --muted: rgba(195,196,212,0.75);
-  --muted-strong: rgba(145,147,165,0.92);
-}
-
-/* Card titles more premium */
-.card-title {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-/* Section separator glow tuning */
-.section-separator-inner {
-  opacity: 0.8;
-  box-shadow: 0 0 32px rgba(255,111,216,0.6);
-}
-
-/* Navigation font tuning */
-.nav-links a {
-  font-weight: 500;
-  letter-spacing: 0.02em;
-}
-
-/* Buttons: premium text rendering */
-.btn-primary, .btn-secondary {
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-/* Hero subtitle clarity */
-.hero-subtitle {
-  font-size: 1.05rem;
-  line-height: 1.55;
-  color: var(--muted);
-}
-
-/* Hero note visibility */
-.hero-note {
-  opacity: 0.85;
-}
-
-/* Contract address font smoothing */
-.contract-address {
-  font-size: 11px;
-  opacity: 0.9;
-}
-
-/* Social pills: refined text spacing */
-.social-pill {
-  letter-spacing: 0.015em;
-  font-weight: 500;
-}
-
-/* Footer typography */
-footer {
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: var(--muted-strong);
-}
-</style>
-
-<!-- Segment 16: Premium Color Calibration – Balanced Palette, Softer Depth, Cleaner Highlights -->
-<style>
-/* Softened neon edges, more premium color grading */
-
-:root {
-  /* Core brand colors refined */
-  --nano-orange: #ff8a3c;
-  --nano-pink: #ff4f81;
-  --nano-magenta: #ff6fd8;
-  --nano-blue: #00c4ff;
-
-  /* Background refinements */
-  --navy: #050716;
-  --card-bg: rgba(12, 14, 30, 0.96);
-
-  /* Muted tones refined for premium contrast */
-  --muted: rgba(210, 212, 225, 0.72);
-  --muted-strong: rgba(160, 162, 178, 0.88);
-
-  /* Softer borders */
-  --border-soft: rgba(255, 255, 255, 0.06);
-}
-
-/* Hero background smoothing */
-.hero {
-  background: radial-gradient(circle at top left, rgba(255, 154, 158, 0.12) 0%, transparent 40%),
-              radial-gradient(circle at bottom right, rgba(0, 242, 254, 0.10) 0%, transparent 45%),
-              linear-gradient(135deg, #050814 0%, #090b19 30%, #101223 65%, #151527 100%);
-}
-
-/* Page wrapper refinement */
-.page-wrapper {
-  background: radial-gradient(circle at 0% 0%, rgba(255,143,107,0.15), transparent 60%),
-              radial-gradient(circle at 100% 0%, rgba(0,196,255,0.10), transparent 60%),
-              radial-gradient(circle at 100% 100%, rgba(255,111,216,0.12), transparent 60%),
-              #050716;
-}
-
-/* Card backgrounds smoother */
-.card {
-  background: rgba(10, 12, 26, 0.95);
-}
-
-/* Hero card glow tuned */
-.hero-card {
-  background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(5,7,22,0.9)),
-              radial-gradient(circle at top left, rgba(255,138,60,0.45), transparent 55%),
-              radial-gradient(circle at bottom right, rgba(0,196,255,0.32), transparent 50%);
-}
-
-/* Section separators – premium glow */
-.section-separator-inner {
-  box-shadow: 0 0 42px rgba(255,111,216,0.55);
-}
-
-/* Buttons: improved contrast */
-.btn-primary {
-  color: #050715;
-}
-
-/* Shadows softened */
-.card:hover,
-.hero-card:hover {
-  box-shadow: 0 26px 54px rgba(0,0,0,0.58);
-}
-
-/* Navigation background tune */
-.nav {
-  background: linear-gradient(to bottom, rgba(5,7,22,0.92), rgba(5,7,22,0.82), rgba(5,7,22,0));
-}
-
-/* Roadmap card color consistency */
-.roadmap-phase {
-  background: rgba(14, 16, 32, 0.80);
-}
-
-/* Step dots softer */
-.step-item::before {
-  background: linear-gradient(135deg, var(--nano-pink), var(--nano-blue));
-  opacity: 0.92;
-}
-</style>
-
-<!-- Segment 17: NanoVerse Animated Background Layer (Ultra‑Light, Zero-Lag) -->
-<style>
-/* NanoVerse animation wrapper */
-#nanoverse {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  overflow: hidden;
-  pointer-events: none;
-  opacity: 0.22;
-}
-
-/* NanoVerse particle */
-.nanopixel {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: rgba(0, 196, 255, 0.8);
-  border-radius: 50%;
-  filter: blur(1px);
-  animation: drift linear infinite;
-  will-change: transform, opacity;
-}
-
-/* Drift animation */
-@keyframes drift {
-  0% {
-    transform: translate3d(var(--start-x), var(--start-y), 0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate3d(var(--end-x), var(--end-y), 0) scale(1.4);
-    opacity: 0;
-  }
-}
-</style>
-
-<div id="nanoverse"></div>
-
-<script>
-// Ultra-light animated NanoVerse background
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("nanoverse");
-  const COUNT = 42; // Extremely light, no lag
-
-  function rand(min, max) {
-    return Math.random() * (max - min) + min;
-  }
-
-  for (let i = 0; i < COUNT; i++) {
-    const dot = document.createElement("div");
-    dot.className = "nanopixel";
-
-    const startX = rand(0, window.innerWidth) + "px";
-    const startY = rand(0, window.innerHeight) + "px";
-
-    const endX = rand(-200, 200) + "px";
-    const endY = rand(-200, 200) + "px";
-
-    const duration = rand(8, 18) + "s";
-    const delay = rand(0, 6) + "s";
-
-    dot.style.setProperty("--start-x", startX);
-    dot.style.setProperty("--start-y", startY);
-    dot.style.setProperty("--end-x", endX);
-    dot.style.setProperty("--end-y", endY);
-
-    dot.style.animationDuration = duration;
-    dot.style.animationDelay = delay;
-
-    container.appendChild(dot);
-  }
-});
-</script>
+</body>
+</html>
