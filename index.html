@@ -1616,31 +1616,40 @@ window.addEventListener("resize", function () {
 // start the smooth loop
 requestAnimationFrame(smoothUpdate);
 
-    // Live price widget (placeholder using Dexscreener-style API)
-    var priceValueEl = document.getElementById("nav-price-value");
+    // Live price widget using Dexscreener API
+var priceValueEl = document.getElementById("nav-price-value");
 
-    async function fetchPrice() {
-      if (!priceValueEl) return;
-      try {
-        // Replace with a real endpoint once $NANO is listed/tracked
-        // Example for Dexscreener:
-        // const res = await fetch("https://api.dexscreener.com/latest/dex/tokens/0x05570200c56b220be701bdabCbdCdB37d1eB6F51");
-        // const data = await res.json();
-        // const pair = data.pairs?.[0];
-        // const price = pair ? Number(pair.priceUsd).toFixed(6) : null;
+async function fetchPrice() {
+  if (!priceValueEl) return;
 
-        // For now, keep a graceful placeholder:
-        var price = null;
+  try {
+    // You can use either the token endpoint or the pair endpoint.
+    // Pair endpoint (recommended once your pool is indexed):
+    // const res = await fetch("https://api.dexscreener.com/latest/dex/pairs/base/0xf7e3154d150691a58ede85f06e87f01f8d19c1b0e2e492bd2dfbd7135991c679");
 
-        if (price) {
-          priceValueEl.textContent = "$" + price + " USD";
-        } else {
-          priceValueEl.textContent = "Not yet tracked";
-        }
-      } catch (e) {
-        priceValueEl.textContent = "Not yet tracked";
-      }
+    // Token endpoint (works for any pair with this token):
+    const res = await fetch(
+      "https://api.dexscreener.com/latest/dex/tokens/0x05570200c56b220be701bdabCbdCdB37d1eB6F51"
+    );
+
+    const data = await res.json();
+    const pair = data.pairs && data.pairs[0];
+    const price = pair && pair.priceUsd ? Number(pair.priceUsd).toFixed(6) : null;
+
+    if (price) {
+      priceValueEl.textContent = "$" + price + " USD";
+    } else {
+      priceValueEl.textContent = "Not yet tracked";
     }
+  } catch (e) {
+    console.error("Price fetch failed", e);
+    priceValueEl.textContent = "Not yet tracked";
+  }
+}
+
+fetchPrice();
+setInterval(fetchPrice, 60000); // refresh every 60s
+
 
     fetchPrice();
     setInterval(fetchPrice, 60000); // refresh every 60s
