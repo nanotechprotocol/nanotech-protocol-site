@@ -1563,39 +1563,58 @@
       lastScroll = current <= 0 ? 0 : current;
     });
 
-    // Parallax background and logo glow
-    var parallaxBg = document.getElementById("parallax-bg");
-    var separators = document.querySelectorAll(".section-separator-inner");
+    // Parallax background and logo glow (smooth version)
+var parallaxBg = document.getElementById("parallax-bg");
+var separators = document.querySelectorAll(".section-separator-inner");
 
-    function handleScrollEffects() {
-      var scrollY = window.scrollY || window.pageYOffset;
-      var vh = window.innerHeight;
+// smooth scroll values
+var smoothScroll = 0;
+var targetScroll = window.scrollY || window.pageYOffset;
 
-      if (parallaxBg) {
-        var factor = scrollY * -0.03;
-        parallaxBg.style.transform = "translate3d(0," + factor + "px,0)";
-        parallaxBg.style.opacity = 0.55 + Math.cos(scrollY / 800) * 0.08;
-      }
+function smoothUpdate() {
+  // ease towards the real scroll position
+  smoothScroll += (targetScroll - smoothScroll) * 0.08;
 
-      separators.forEach(function (el) {
-        var rect = el.getBoundingClientRect();
-        var center = rect.top + rect.height / 2;
-        var dist = center - vh / 2;
-        var norm = Math.max(-1, Math.min(1, dist / (vh / 2)));
+  var vh = window.innerHeight;
 
-        var translate = -norm * 16; // hover up/down
-        var glow = 30 - Math.abs(norm) * 18; // more glow near center
-        var opacity = 0.45 + (1 - Math.abs(norm)) * 0.55;
+  // smooth parallax BG
+  if (parallaxBg) {
+    var factor = smoothScroll * -0.03;
+    parallaxBg.style.transform = "translate3d(0," + factor + "px,0)";
+    parallaxBg.style.opacity = 0.55 + Math.cos(smoothScroll / 800) * 0.08;
+  }
 
-        el.style.transform = "translate3d(0," + translate + "px,0)";
-        el.style.boxShadow = "0 0 " + glow + "px rgba(255, 111, 216, 0.55)";
-        el.style.opacity = opacity;
-      });
-    }
+  // smooth logo divider motion + glow
+  separators.forEach(function (el) {
+    var rect = el.getBoundingClientRect();
+    var center = rect.top + rect.height / 2;
+    var dist = center - vh / 2;
+    var norm = Math.max(-1, Math.min(1, dist / (vh / 2)));
 
-    window.addEventListener("scroll", handleScrollEffects);
-    window.addEventListener("resize", handleScrollEffects);
-    handleScrollEffects();
+    var translate = -norm * 16;                // gentle up/down drift
+    var glow = 26 - Math.abs(norm) * 14;       // more glow near center
+    var opacity = 0.55 + (1 - Math.abs(norm)) * 0.45;
+
+    el.style.transform = "translate3d(0," + translate + "px,0)";
+    el.style.boxShadow = "0 0 " + glow + "px rgba(255, 111, 216, 0.55)";
+    el.style.opacity = opacity;
+  });
+
+  // keep the animation in sync with the screen refresh
+  requestAnimationFrame(smoothUpdate);
+}
+
+// update targetScroll when the user scrolls / resizes
+window.addEventListener("scroll", function () {
+  targetScroll = window.scrollY || window.pageYOffset;
+});
+
+window.addEventListener("resize", function () {
+  targetScroll = window.scrollY || window.pageYOffset;
+});
+
+// start the smooth loop
+requestAnimationFrame(smoothUpdate);
 
     // Live price widget (placeholder using Dexscreener-style API)
     var priceValueEl = document.getElementById("nav-price-value");
