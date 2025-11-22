@@ -983,6 +983,120 @@
       opacity: 0.6;
       line-height: 1.5;
     }
+        .legal-text {
+      margin-top: 32px;
+      font-size: 0.85rem;
+      opacity: 0.6;
+      line-height: 1.5;
+    }
+
+    /* Burn schedule */
+
+    .burn-section {
+      background: radial-gradient(circle at top, rgba(255, 138, 60, 0.12), transparent 55%),
+        radial-gradient(circle at bottom, rgba(0, 196, 255, 0.08), transparent 55%),
+        #050814;
+    }
+
+    .burn-heading-tag {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted-strong);
+      margin-bottom: 6px;
+    }
+
+    .burn-summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 900px) {
+      .burn-summary {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .burn-chip-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted-strong);
+      margin-bottom: 4px;
+    }
+
+    .burn-chip-value {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .burn-chip-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .burn-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    @media (max-width: 1024px) {
+      .burn-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .burn-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .burn-month-card {
+      border-radius: 18px;
+      background: rgba(8, 10, 30, 0.96);
+      border: 1px solid var(--border-soft);
+      padding: 16px 18px 14px;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+      font-size: 13px;
+    }
+
+    .burn-month-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+
+    .burn-month-name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .burn-month-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--nano-blue);
+    }
+
+    .burn-month-amount {
+      font-size: 15px;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .burn-month-note {
+      margin-top: 6px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+
   </style>
 </head>
 <body>
@@ -1272,6 +1386,203 @@
       </div>
     </div>
   </section>
+  <!-- TOKEN OVERVIEW -->
+  <section id="token">
+    ...
+  </section>
+
+  <!-- SECTION SEPARATOR – Burn schedule -->
+  <div class="section-separator">
+    <div class="section-separator-inner">
+      <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
+    </div>
+  </div>
+
+  <!-- BURN SCHEDULE -->
+  <section id="burn-schedule" class="burn-section">
+    <div class="container fade-in-up">
+      <p class="burn-heading-tag">Deflation</p>
+      <h2 class="section-heading">$NANO 12-month burn schedule.</h2>
+      <p class="section-lead">
+        A simple, transparent deflation plan: every month we remove a fixed slice of supply from circulation,
+        on-chain, with public transaction hashes. No surprise mechanics — just steady compression over time.
+      </p>
+
+      <!-- High-level summary -->
+      <div class="burn-summary">
+        <div class="card">
+          <div class="burn-chip-label">Total supply</div>
+          <div class="burn-chip-value">100,000,000 NANO</div>
+          <div class="burn-chip-sub">
+            Fixed, hard-capped ERC-20 supply on Base. No new tokens can be minted beyond this cap.
+          </div>
+        </div>
+        <div class="card">
+          <div class="burn-chip-label">Monthly burn</div>
+          <div class="burn-chip-value">1.5% / month</div>
+          <div class="burn-chip-sub">
+            <strong>1,500,000 NANO</strong> targeted to be burned on the first day of each month,
+            for twelve consecutive months.
+          </div>
+        </div>
+        <div class="card">
+          <div class="burn-chip-label">Year-1 target</div>
+          <div class="burn-chip-value">18,000,000 NANO</div>
+          <div class="burn-chip-sub">
+            If the full schedule is completed, <strong>18% of supply</strong> is permanently removed in the first year.
+          </div>
+        </div>
+      </div>
+
+      <!-- Month-by-month cards -->
+      <div class="burn-grid">
+        <div class="burn-month-card">
+          <div class="burn-month-header">
+            <div class="burn-month-name">Month 1</div>
+            <div class="burn-month-tag">Kickoff burn</div>
+          </div>
+          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-month-note">
+            Launch signal. Establishes the deflation pattern and sets expectations for the year.
+          </div>
+        </div>
+
+        <div class="burn-month-card">
+          <div class="burn-month-header">
+            <div class="burn-month-name">Month 2</div>
+            <div class="burn-month-tag">Ongoing</div>
+          </div>
+          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-month-note">
+            Continues the scheduled reduction of circulating supply as liquidity and community grow.
+          </div>
+        </div>
+
+        <div class="burn-month-card">
+          <div class="burn-month-header">
+            <div class="burn-month-name">Month 3</div>
+            <div class="burn-month-tag">90-day mark</div>
+          </div>
+          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-month-note">
+            First 90-day milestone — three burns completed, cumulative supply compression begins to add up.
+          </div>
+        </div>
+
+        <div class="burn-month-card">
+          <div class="burn-month-header">
+            <div class="burn-month-name">Month 4</div>
+            <div class="burn-month-tag">Q2</div>
+          </div>
+          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-month-note">
+            Aligns with early growth and awareness: more eyes on the project, slightly less supply each month.
+          </div>
+        </div>
+
+        <div class="burn-month-card">
+          <div class="burn-month-header">
+            <div class="burn-month-name">Month 5</div>
+            <div class="burn-month-tag">Ongoing</div>
+          </div>
+          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-month-note">
+            Keeps the deflation narrative consistent as trading and community activity stabilize.
+          </div>
+        </div>
+
+        <div class="burn-month-card">
+          <div class="burn-month-header">
+            <div class="burn-month-name">Month 6</div>
+            <div class="burn-month-tag">Mid-year</div>
+          </div>
+          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-month-note">
+            Halfway checkpoint. At this point, up to <strong>9,000,000 NANO</strong> may be removed, subject to execution.
+          </div>
+        </div>
+
+        <div class="burn-month-card">
+          <div class="burn-month-header">
+            <div class="burn-month-name">Month 7</div>
+            <div class="burn-month-tag">Second half</div>
+          </div>
+          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-month-note">
+            Continues the same rules: no surprise changes, just predictable monthly burns.
+          </div>
+        </div>
+
+        <div class="burn-month-card">
+          <div class="burn-month-header">
+            <div class="burn-month-name">Month 8</div>
+            <div class="burn-month-tag">Ongoing</div>
+          </div>
+          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-month-note">
+            Pairs well with future awareness campaigns, listings, or collaborations if they occur.
+          </div>
+        </div>
+
+        <div class="burn-month-card">
+          <div class="burn-month-header">
+            <div class="burn-month-name">Month 9</div>
+            <div class="burn-month-tag">Community growth</div>
+          </div>
+          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-month-note">
+            Targets a period where holder count and social reach may be higher than at launch.
+          </div>
+        </div>
+
+        <div class="burn-month-card">
+          <div class="burn-month-header">
+            <div class="burn-month-name">Month 10</div>
+            <div class="burn-month-tag">Late-year</div>
+          </div>
+          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-month-note">
+            Maintains the same parameters — no hidden taxes or surprise tokenomic changes.
+          </div>
+        </div>
+
+        <div class="burn-month-card">
+          <div class="burn-month-header">
+            <div class="burn-month-name">Month 11</div>
+            <div class="burn-month-tag">Holder focus</div>
+          </div>
+          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-month-note">
+            Positions the supply for longer-term holders who stayed through the first year of volatility.
+          </div>
+        </div>
+
+        <div class="burn-month-card">
+          <div class="burn-month-header">
+            <div class="burn-month-name">Month 12</div>
+            <div class="burn-month-tag">Year-1 close</div>
+          </div>
+          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-month-note">
+            Wraps up the initial 12-month schedule and sets the stage for any future burn or milestone proposals.
+          </div>
+        </div>
+      </div>
+
+      <p class="legal-text">
+        This burn schedule is an aspirational plan, not a guarantee. Actual burns depend on execution, available
+        reserves, and community alignment. All burns, if completed, will be verifiable on-chain via public
+        transaction hashes. Nothing here is financial advice.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION SEPARATOR 4 -->
+  <div class="section-separator">
+    <div class="section-separator-inner">
+      <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
+    </div>
+  </div>
 
   <!-- SECTION SEPARATOR 4 -->
   <div class="section-separator">
