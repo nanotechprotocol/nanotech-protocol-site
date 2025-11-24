@@ -1,54 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script>
- <script>
-// FIXED CONSTANTS (do not edit)
-const TOTAL_SUPPLY_NANO = 100_000_000;
-const MONTHLY_BURN_NANO = 5_000_000;
-
-// LIVE TOKEN SUPPLY FETCH (BaseScan)
-async function fetchLiveSupply() {
-  try {
-    const res = await fetch(
-      "https://api.basescan.org/api?module=stats&action=tokensupply&contractaddress=0x05570200c56b220be701bdabCbdCdB37d1eB6F51"
-    );
-
-    const data = await res.json();
-
-    if (data.result) {
-      const rawSupply = Number(data.result) / 1e18;
-
-      const supplyEl = document.getElementById("live-total-supply");
-      const burnEl = document.getElementById("burn-total-display");
-
-      // UPDATE TOTAL SUPPLY
-      if (supplyEl) supplyEl.textContent = rawSupply.toLocaleString("en-US");
-
-      // UPDATE BURNED
-      const burned = TOTAL_SUPPLY_NANO - rawSupply;
-      if (burnEl) {
-        burnEl.textContent =
-          burned.toLocaleString("en-US") +
-          " NANO (" +
-          ((burned / TOTAL_SUPPLY_NANO) * 100).toFixed(2) +
-          "%)";
-      }
-    }
-  } catch (err) {
-    console.error("Supply fetch failed:", err);
-  }
-}
-
-// Refresh every 10 seconds
-setInterval(fetchLiveSupply, 10000);
-
-// Run immediately
-fetchLiveSupply();
-</script>
-
-</script>
-
   <meta charset="UTF-8" />
   <title>Nanotech Protocol · $NANO on Base – The Future of Biology Is Programmable</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -75,7 +27,10 @@ fetchLiveSupply();
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nanotechprotocol.com/" />
-  <meta property="og:title" content="Nanotech Protocol · $NANO on Base – The Future of Biology Is Programmable" />
+  <meta
+    property="og:title"
+    content="Nanotech Protocol · $NANO on Base – The Future of Biology Is Programmable"
+  />
   <meta
     property="og:description"
     content="A meme token orbiting programmable biology, AI-designed medicines, and nanotech narratives. Built on Base, with a fixed 100M $NANO supply."
@@ -94,8 +49,8 @@ fetchLiveSupply();
     content="Nanotech Protocol ($NANO) – a culture layer for programmable biology, AI drug design, and on-chain memes on Base."
   />
   <meta name="twitter:image" content="https://nanotechprotocol.com/MAINLOGO.png" />
-</head>
 
+  <!-- MAIN STYLES -->
   <style>
     :root {
       --nano-orange: #ff8a3c;
@@ -1031,14 +986,8 @@ fetchLiveSupply();
       opacity: 0.6;
       line-height: 1.5;
     }
-        .legal-text {
-      margin-top: 32px;
-      font-size: 0.85rem;
-      opacity: 0.6;
-      line-height: 1.5;
-    }
 
-       /* Burn schedule */
+    /* Burn schedule */
 
     .burn-section {
       background: radial-gradient(circle at top, rgba(255, 138, 60, 0.12), transparent 55%),
@@ -1197,24 +1146,72 @@ fetchLiveSupply();
     .burn-live-pill-value {
       font-weight: 600;
       color: #ffffff;
- #token {
-  padding-bottom: 20px !important;
-}
-.section-separator {
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-}
-
-.section-separator-inner {
-  transform: translateY(0) !important;
-}
-
     }
-#burn-schedule {
-  padding-top: 24px;
-}
 
+    /* Token section spacing tweaks */
+    #token {
+      padding-bottom: 20px !important;
+    }
+
+    .section-separator {
+      padding-top: 10px !important;
+      padding-bottom: 10px !important;
+    }
+
+    .section-separator-inner {
+      transform: translateY(0) !important;
+    }
+
+    #burn-schedule {
+      padding-top: 24px;
+    }
   </style>
+
+  <!-- LIVE SUPPLY SCRIPT -->
+  <script>
+    // FIXED CONSTANTS (do not edit)
+    const TOTAL_SUPPLY_NANO = 100_000_000;
+    const MONTHLY_BURN_NANO = 5_000_000;
+
+    // LIVE TOKEN SUPPLY FETCH (BaseScan)
+    async function fetchLiveSupply() {
+      try {
+        const res = await fetch(
+          "https://api.basescan.org/api?module=stats&action=tokensupply&contractaddress=0x05570200c56b220be701bdabCbdCdB37d1eB6F51"
+        );
+
+        const data = await res.json();
+
+        if (data.result) {
+          const rawSupply = Number(data.result) / 1e18;
+
+          const supplyEl = document.getElementById("live-total-supply");
+          const burnEl = document.getElementById("burn-total-display");
+
+          // UPDATE TOTAL SUPPLY
+          if (supplyEl) supplyEl.textContent = rawSupply.toLocaleString("en-US");
+
+          // UPDATE BURNED
+          const burned = TOTAL_SUPPLY_NANO - rawSupply;
+          if (burnEl) {
+            burnEl.textContent =
+              burned.toLocaleString("en-US") +
+              " NANO (" +
+              ((burned / TOTAL_SUPPLY_NANO) * 100).toFixed(2) +
+              "%)";
+          }
+        }
+      } catch (err) {
+        console.error("Supply fetch failed:", err);
+      }
+    }
+
+    // Refresh every 10 seconds
+    setInterval(fetchLiveSupply, 10000);
+
+    // Run immediately
+    fetchLiveSupply();
+  </script>
 </head>
 <body>
 <div class="page-wrapper">
@@ -1267,17 +1264,17 @@ fetchLiveSupply();
         </div>
         <button class="nav-mobile-close" id="mobile-close" aria-label="Close menu">✕</button>
       </div>
-     <div class="nav-mobile-links">
-  <a href="#about">About</a>
-  <a href="#biology">Biology</a>
-  <a href="#token">Token</a>
-  <a href="#how-to-buy">Buy</a>
-  <a href="#roadmap">Roadmap</a>
-  <a href="#community">Community</a>
-  <a href="#contract">View contract</a>
-  <a href="https://x.com/NanoTechToken" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
-  <a href="https://t.me/NanoTechProtocol" target="_blank" rel="noopener noreferrer">Telegram</a>
-</div>
+      <div class="nav-mobile-links">
+        <a href="#about">About</a>
+        <a href="#biology">Biology</a>
+        <a href="#token">Token</a>
+        <a href="#how-to-buy">Buy</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#community">Community</a>
+        <a href="#contract">View contract</a>
+        <a href="https://x.com/NanoTechToken" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
+        <a href="https://t.me/NanoTechProtocol" target="_blank" rel="noopener noreferrer">Telegram</a>
+      </div>
       <div class="nav-mobile-footer">
         $NANO — speculative meme token. Not financial, medical, or investment advice.
       </div>
@@ -1324,10 +1321,12 @@ fetchLiveSupply();
             </div>
           </div>
           <div class="hero-card-mid">
-         <div class="stat-value">
-    <span id="live-total-supply">Loading...</span> NANO
-</div>
-
+            <div class="stat-row">
+              <div class="stat-label">Total supply</div>
+              <div class="stat-value">
+                <span id="live-total-supply">Loading...</span> NANO
+              </div>
+            </div>
             <div class="stat-row">
               <div class="stat-label">Decimals</div>
               <div class="stat-value">18</div>
@@ -1503,14 +1502,13 @@ fetchLiveSupply();
       </div>
     </div>
   </section>
-  <!-- TOKEN OVERVIEW -->
-  <section id="token">
-<!-- SECTION SEPARATOR – Burn schedule -->
-<div class="section-separator">
-  <div class="section-separator-inner">
-    <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
+
+  <!-- SECTION SEPARATOR – Burn schedule -->
+  <div class="section-separator">
+    <div class="section-separator-inner">
+      <img src="MAINLOGO.png" alt="Nanotech Protocol logo divider" />
+    </div>
   </div>
-</div>
 
   <!-- BURN SCHEDULE -->
   <section id="burn-schedule" class="burn-section">
@@ -1748,7 +1746,6 @@ fetchLiveSupply();
     </div>
   </section>
 
-
   <!-- SECTION SEPARATOR 4 -->
   <div class="section-separator">
     <div class="section-separator-inner">
@@ -1853,7 +1850,7 @@ fetchLiveSupply();
           </ul>
         </div>
 
-               <!-- Phase 3 -->
+        <!-- Phase 3 -->
         <div class="roadmap-phase roadmap-phase--progress fade-in-up">
           <div class="roadmap-phase-header">
             <div class="roadmap-phase-tag">Phase 3</div>
@@ -1869,7 +1866,6 @@ fetchLiveSupply();
             <li>CoinGecko / CMC submissions (no guarantees)</li>
           </ul>
         </div>
-
 
         <!-- Phase 4 -->
         <div class="roadmap-phase fade-in-up">
@@ -1953,7 +1949,7 @@ fetchLiveSupply();
 </div>
 
 <script>
-  // Copy contract button
+  // Copy contract button & all UI logic
   document.addEventListener("DOMContentLoaded", function () {
     var btn = document.getElementById("copy-btn");
     var addressEl = document.getElementById("nano-address");
@@ -2016,9 +2012,11 @@ fetchLiveSupply();
       mobileClose.addEventListener("click", closeMobile);
     }
 
-    mobileOverlay?.addEventListener("click", function (e) {
-      if (e.target === mobileOverlay) closeMobile();
-    });
+    if (mobileOverlay) {
+      mobileOverlay.addEventListener("click", function (e) {
+        if (e.target === mobileOverlay) closeMobile();
+      });
+    }
 
     document.querySelectorAll(".nav-mobile-links a").forEach(function (link) {
       link.addEventListener("click", closeMobile);
@@ -2044,98 +2042,86 @@ fetchLiveSupply();
     });
 
     // Parallax background and logo glow (smooth version)
-var parallaxBg = document.getElementById("parallax-bg");
-var separators = document.querySelectorAll(".section-separator-inner");
+    var parallaxBg = document.getElementById("parallax-bg");
+    var separators = document.querySelectorAll(".section-separator-inner");
 
-// smooth scroll values
-var smoothScroll = 0;
-var targetScroll = window.scrollY || window.pageYOffset;
+    // smooth scroll values
+    var smoothScroll = 0;
+    var targetScroll = window.scrollY || window.pageYOffset;
 
-function smoothUpdate() {
-  // ease towards the real scroll position
-  smoothScroll += (targetScroll - smoothScroll) * 0.08;
+    function smoothUpdate() {
+      // ease towards the real scroll position
+      smoothScroll += (targetScroll - smoothScroll) * 0.08;
 
-  var vh = window.innerHeight;
+      var vh = window.innerHeight;
 
-  // smooth parallax BG
-  if (parallaxBg) {
-    var factor = smoothScroll * -0.03;
-    parallaxBg.style.transform = "translate3d(0," + factor + "px,0)";
-    parallaxBg.style.opacity = 0.55 + Math.cos(smoothScroll / 800) * 0.08;
-  }
+      // smooth parallax BG
+      if (parallaxBg) {
+        var factor = smoothScroll * -0.03;
+        parallaxBg.style.transform = "translate3d(0," + factor + "px,0)";
+        parallaxBg.style.opacity = 0.55 + Math.cos(smoothScroll / 800) * 0.08;
+      }
 
-  // smooth logo divider motion + glow
-  separators.forEach(function (el) {
-    var rect = el.getBoundingClientRect();
-    var center = rect.top + rect.height / 2;
-    var dist = center - vh / 2;
-    var norm = Math.max(-1, Math.min(1, dist / (vh / 2)));
+      // smooth logo divider motion + glow
+      separators.forEach(function (el) {
+        var rect = el.getBoundingClientRect();
+        var center = rect.top + rect.height / 2;
+        var dist = center - vh / 2;
+        var norm = Math.max(-1, Math.min(1, dist / (vh / 2)));
 
-    var translate = -norm * 16;                // gentle up/down drift
-    var glow = 26 - Math.abs(norm) * 14;       // more glow near center
-    var opacity = 0.55 + (1 - Math.abs(norm)) * 0.45;
+        var translate = -norm * 16;                // gentle up/down drift
+        var glow = 26 - Math.abs(norm) * 14;       // more glow near center
+        var opacity = 0.55 + (1 - Math.abs(norm)) * 0.45;
 
-    el.style.transform = "translate3d(0," + translate + "px,0)";
-    el.style.boxShadow = "0 0 " + glow + "px rgba(255, 111, 216, 0.55)";
-    el.style.opacity = opacity;
-  });
+        el.style.transform = "translate3d(0," + translate + "px,0)";
+        el.style.boxShadow = "0 0 " + glow + "px rgba(255, 111, 216, 0.55)";
+        el.style.opacity = opacity;
+      });
 
-  // keep the animation in sync with the screen refresh
-  requestAnimationFrame(smoothUpdate);
-}
+      requestAnimationFrame(smoothUpdate);
+    }
 
-// update targetScroll when the user scrolls / resizes
-window.addEventListener("scroll", function () {
-  targetScroll = window.scrollY || window.pageYOffset;
-});
+    window.addEventListener("scroll", function () {
+      targetScroll = window.scrollY || window.pageYOffset;
+    });
 
-window.addEventListener("resize", function () {
-  targetScroll = window.scrollY || window.pageYOffset;
-});
+    window.addEventListener("resize", function () {
+      targetScroll = window.scrollY || window.pageYOffset;
+    });
 
-// start the smooth loop
-requestAnimationFrame(smoothUpdate);
+    requestAnimationFrame(smoothUpdate);
 
     // Live price widget using Dexscreener API
-var priceValueEl = document.getElementById("nav-price-value");
+    var priceValueEl = document.getElementById("nav-price-value");
 
-async function fetchPrice() {
-  if (!priceValueEl) return;
+    async function fetchPrice() {
+      if (!priceValueEl) return;
 
-  try {
-    // You can use either the token endpoint or the pair endpoint.
-    // Pair endpoint (recommended once your pool is indexed):
-    // const res = await fetch("https://api.dexscreener.com/latest/dex/pairs/base/0xf7e3154d150691a58ede85f06e87f01f8d19c1b0e2e492bd2dfbd7135991c679");
+      try {
+        const res = await fetch(
+          "https://api.dexscreener.com/latest/dex/tokens/0x05570200c56b220be701bdabCbdCdB37d1eB6F51"
+        );
 
-    // Token endpoint (works for any pair with this token):
-    const res = await fetch(
-      "https://api.dexscreener.com/latest/dex/tokens/0x05570200c56b220be701bdabCbdCdB37d1eB6F51"
-    );
+        const data = await res.json();
+        const pair = data.pairs && data.pairs[0];
+        const price = pair && pair.priceUsd ? Number(pair.priceUsd).toFixed(6) : null;
 
-    const data = await res.json();
-    const pair = data.pairs && data.pairs[0];
-    const price = pair && pair.priceUsd ? Number(pair.priceUsd).toFixed(6) : null;
-
-    if (price) {
-      priceValueEl.textContent = "$" + price + " USD";
-    } else {
-      priceValueEl.textContent = "Not yet tracked";
+        if (price) {
+          priceValueEl.textContent = "$" + price + " USD";
+        } else {
+          priceValueEl.textContent = "Not yet tracked";
+        }
+      } catch (e) {
+        console.error("Price fetch failed", e);
+        priceValueEl.textContent = "Not yet tracked";
+      }
     }
-  } catch (e) {
-    console.error("Price fetch failed", e);
-    priceValueEl.textContent = "Not yet tracked";
-  }
-}
-
-fetchPrice();
-setInterval(fetchPrice, 60000); // refresh every 60s
-
 
     fetchPrice();
     setInterval(fetchPrice, 60000); // refresh every 60s
-        // ---- BURN SCHEDULE TRACKER ----
-    var TOTAL_SUPPLY_NANO = 100000000;
-    var MONTHLY_BURN_NANO = 5000000;
+
+    // ---- BURN SCHEDULE TRACKER ----
+    // Uses TOTAL_SUPPLY_NANO and MONTHLY_BURN_NANO from the head script
 
     // Add the month numbers that are completed here, e.g. [1, 2, 3]
     var completedMonths = [1]; // <-- update this as burns are done
@@ -2169,16 +2155,6 @@ setInterval(fetchPrice, 60000); // refresh every 60s
     }
 
     updateBurnUI();
-//------------------------------------------------
-// HERO CARD SUPPLY UPDATE (front page total supply)
-//------------------------------------------------
-function updateHeroSupply(total) {
-    var el = document.getElementById("hero-total-supply");
-    if (el) {
-        el.textContent = total.toLocaleString("en-US");
-    }
-}
-
   });
 </script>
 </body>
