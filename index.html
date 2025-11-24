@@ -990,7 +990,7 @@
       line-height: 1.5;
     }
 
-    /* Burn schedule */
+       /* Burn schedule */
 
     .burn-section {
       background: radial-gradient(circle at top, rgba(255, 138, 60, 0.12), transparent 55%),
@@ -1063,6 +1063,19 @@
       padding: 16px 18px 14px;
       box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
       font-size: 13px;
+      position: relative;
+      transition:
+        box-shadow 0.25s ease-out,
+        border-color 0.25s ease-out,
+        transform 0.25s ease-out;
+    }
+
+    .burn-month-card--completed {
+      border-color: rgba(56, 252, 160, 0.65);
+      box-shadow:
+        0 0 0 1px rgba(56, 252, 160, 0.4),
+        0 22px 46px rgba(0, 0, 0, 0.75);
+      transform: translateY(-2px);
     }
 
     .burn-month-header {
@@ -1087,13 +1100,57 @@
     .burn-month-amount {
       font-size: 15px;
       font-weight: 500;
-      margin-top: 4px;
+      margin-top: 6px;
     }
 
     .burn-month-note {
       margin-top: 6px;
       color: var(--muted);
     }
+
+    .burn-completed-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(56, 252, 160, 0.14);
+      border: 1px solid rgba(56, 252, 160, 0.45);
+      border-radius: 999px;
+      color: #4ade80;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* Burn tracker pill at top of section */
+    .burn-live-pill {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: rgba(8, 10, 30, 0.95);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+      margin-bottom: 22px;
+      font-size: 13px;
+    }
+
+    .burn-live-pill-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted-strong);
+    }
+
+    .burn-live-pill-value {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
   </style>
 </head>
 
@@ -1408,6 +1465,14 @@
         on-chain, with public transaction hashes. No surprise mechanics — just steady compression over time.
       </p>
 
+      <!-- Live total -->
+      <div class="burn-live-pill">
+        <span class="burn-live-pill-label">Total burned so far</span>
+        <span class="burn-live-pill-value" id="burn-total-display">
+          0 NANO (0.00%)
+        </span>
+      </div>
+
       <!-- High-level summary -->
       <div class="burn-summary">
         <div class="card">
@@ -1419,150 +1484,199 @@
         </div>
         <div class="card">
           <div class="burn-chip-label">Monthly burn</div>
-          <div class="burn-chip-value">1.5% / month</div>
+          <div class="burn-chip-value">5% / month</div>
           <div class="burn-chip-sub">
-            <strong>1,500,000 NANO</strong> targeted to be burned on the first day of each month,
+            <strong>5,000,000 NANO</strong> targeted to be burned on the first day of each month,
             for twelve consecutive months.
           </div>
         </div>
         <div class="card">
           <div class="burn-chip-label">Year-1 target</div>
-          <div class="burn-chip-value">18,000,000 NANO</div>
+          <div class="burn-chip-value">60,000,000 NANO</div>
           <div class="burn-chip-sub">
-            If the full schedule is completed, <strong>18% of supply</strong> is permanently removed in the first year.
+            If the full schedule is completed, up to <strong>60% of supply</strong> is targeted to be removed
+            in the first year (subject to execution and community alignment).
           </div>
         </div>
       </div>
 
       <!-- Month-by-month cards -->
       <div class="burn-grid">
-        <div class="burn-month-card">
+        <!-- Month 1 -->
+        <div class="burn-month-card" id="burn-month-1">
           <div class="burn-month-header">
             <div class="burn-month-name">Month 1</div>
             <div class="burn-month-tag">Kickoff burn</div>
           </div>
-          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-completed-badge" id="burn-m1-badge" style="display:none;">
+            ✓ Completed
+          </div>
+          <div class="burn-month-amount">5,000,000 NANO burned</div>
           <div class="burn-month-note">
             Launch signal. Establishes the deflation pattern and sets expectations for the year.
           </div>
         </div>
 
-        <div class="burn-month-card">
+        <!-- Month 2 -->
+        <div class="burn-month-card" id="burn-month-2">
           <div class="burn-month-header">
             <div class="burn-month-name">Month 2</div>
             <div class="burn-month-tag">Ongoing</div>
           </div>
-          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-completed-badge" id="burn-m2-badge" style="display:none;">
+            ✓ Completed
+          </div>
+          <div class="burn-month-amount">5,000,000 NANO burned</div>
           <div class="burn-month-note">
             Continues the scheduled reduction of circulating supply as liquidity and community grow.
           </div>
         </div>
 
-        <div class="burn-month-card">
+        <!-- Month 3 -->
+        <div class="burn-month-card" id="burn-month-3">
           <div class="burn-month-header">
             <div class="burn-month-name">Month 3</div>
             <div class="burn-month-tag">90-day mark</div>
           </div>
-          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-completed-badge" id="burn-m3-badge" style="display:none;">
+            ✓ Completed
+          </div>
+          <div class="burn-month-amount">5,000,000 NANO burned</div>
           <div class="burn-month-note">
             First 90-day milestone — three burns completed, cumulative supply compression begins to add up.
           </div>
         </div>
 
-        <div class="burn-month-card">
+        <!-- Month 4 -->
+        <div class="burn-month-card" id="burn-month-4">
           <div class="burn-month-header">
             <div class="burn-month-name">Month 4</div>
             <div class="burn-month-tag">Q2</div>
           </div>
-          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-completed-badge" id="burn-m4-badge" style="display:none;">
+            ✓ Completed
+          </div>
+          <div class="burn-month-amount">5,000,000 NANO burned</div>
           <div class="burn-month-note">
             Aligns with early growth and awareness: more eyes on the project, slightly less supply each month.
           </div>
         </div>
 
-        <div class="burn-month-card">
+        <!-- Month 5 -->
+        <div class="burn-month-card" id="burn-month-5">
           <div class="burn-month-header">
             <div class="burn-month-name">Month 5</div>
             <div class="burn-month-tag">Ongoing</div>
           </div>
-          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-completed-badge" id="burn-m5-badge" style="display:none;">
+            ✓ Completed
+          </div>
+          <div class="burn-month-amount">5,000,000 NANO burned</div>
           <div class="burn-month-note">
             Keeps the deflation narrative consistent as trading and community activity stabilize.
           </div>
         </div>
 
-        <div class="burn-month-card">
+        <!-- Month 6 -->
+        <div class="burn-month-card" id="burn-month-6">
           <div class="burn-month-header">
             <div class="burn-month-name">Month 6</div>
             <div class="burn-month-tag">Mid-year</div>
           </div>
-          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-completed-badge" id="burn-m6-badge" style="display:none;">
+            ✓ Completed
+          </div>
+          <div class="burn-month-amount">5,000,000 NANO burned</div>
           <div class="burn-month-note">
-            Halfway checkpoint. At this point, up to <strong>9,000,000 NANO</strong> may be removed, subject to execution.
+            Halfway checkpoint. At this point, up to <strong>30,000,000 NANO</strong> may be removed, subject to execution.
           </div>
         </div>
 
-        <div class="burn-month-card">
+        <!-- Month 7 -->
+        <div class="burn-month-card" id="burn-month-7">
           <div class="burn-month-header">
             <div class="burn-month-name">Month 7</div>
             <div class="burn-month-tag">Second half</div>
           </div>
-          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-completed-badge" id="burn-m7-badge" style="display:none;">
+            ✓ Completed
+          </div>
+          <div class="burn-month-amount">5,000,000 NANO burned</div>
           <div class="burn-month-note">
             Continues the same rules: no surprise changes, just predictable monthly burns.
           </div>
         </div>
 
-        <div class="burn-month-card">
+        <!-- Month 8 -->
+        <div class="burn-month-card" id="burn-month-8">
           <div class="burn-month-header">
             <div class="burn-month-name">Month 8</div>
             <div class="burn-month-tag">Ongoing</div>
           </div>
-          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-completed-badge" id="burn-m8-badge" style="display:none;">
+            ✓ Completed
+          </div>
+          <div class="burn-month-amount">5,000,000 NANO burned</div>
           <div class="burn-month-note">
             Pairs well with future awareness campaigns, listings, or collaborations if they occur.
           </div>
         </div>
 
-        <div class="burn-month-card">
+        <!-- Month 9 -->
+        <div class="burn-month-card" id="burn-month-9">
           <div class="burn-month-header">
             <div class="burn-month-name">Month 9</div>
             <div class="burn-month-tag">Community growth</div>
           </div>
-          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-completed-badge" id="burn-m9-badge" style="display:none;">
+            ✓ Completed
+          </div>
+          <div class="burn-month-amount">5,000,000 NANO burned</div>
           <div class="burn-month-note">
             Targets a period where holder count and social reach may be higher than at launch.
           </div>
         </div>
 
-        <div class="burn-month-card">
+        <!-- Month 10 -->
+        <div class="burn-month-card" id="burn-month-10">
           <div class="burn-month-header">
             <div class="burn-month-name">Month 10</div>
             <div class="burn-month-tag">Late-year</div>
           </div>
-          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-completed-badge" id="burn-m10-badge" style="display:none;">
+            ✓ Completed
+          </div>
+          <div class="burn-month-amount">5,000,000 NANO burned</div>
           <div class="burn-month-note">
             Maintains the same parameters — no hidden taxes or surprise tokenomic changes.
           </div>
         </div>
 
-        <div class="burn-month-card">
+        <!-- Month 11 -->
+        <div class="burn-month-card" id="burn-month-11">
           <div class="burn-month-header">
             <div class="burn-month-name">Month 11</div>
             <div class="burn-month-tag">Holder focus</div>
           </div>
-          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-completed-badge" id="burn-m11-badge" style="display:none;">
+            ✓ Completed
+          </div>
+          <div class="burn-month-amount">5,000,000 NANO burned</div>
           <div class="burn-month-note">
             Positions the supply for longer-term holders who stayed through the first year of volatility.
           </div>
         </div>
 
-        <div class="burn-month-card">
+        <!-- Month 12 -->
+        <div class="burn-month-card" id="burn-month-12">
           <div class="burn-month-header">
             <div class="burn-month-name">Month 12</div>
             <div class="burn-month-tag">Year-1 close</div>
           </div>
-          <div class="burn-month-amount">1,500,000 NANO burned</div>
+          <div class="burn-completed-badge" id="burn-m12-badge" style="display:none;">
+            ✓ Completed
+          </div>
+          <div class="burn-month-amount">5,000,000 NANO burned</div>
           <div class="burn-month-note">
             Wraps up the initial 12-month schedule and sets the stage for any future burn or milestone proposals.
           </div>
@@ -1576,6 +1690,7 @@
       </p>
     </div>
   </section>
+
 
   <!-- SECTION SEPARATOR 4 -->
   <div class="section-separator">
@@ -1961,6 +2076,43 @@ setInterval(fetchPrice, 60000); // refresh every 60s
 
     fetchPrice();
     setInterval(fetchPrice, 60000); // refresh every 60s
+        // ---- BURN SCHEDULE TRACKER ----
+    var TOTAL_SUPPLY_NANO = 100000000;
+    var MONTHLY_BURN_NANO = 5000000;
+
+    // Add the month numbers that are completed here, e.g. [1, 2, 3]
+    var completedMonths = []; // <-- update this as burns are done
+
+    function updateBurnUI() {
+      var totalBurned = completedMonths.length * MONTHLY_BURN_NANO;
+
+      // Update pill
+      var pill = document.getElementById("burn-total-display");
+      if (pill) {
+        var pct = (totalBurned / TOTAL_SUPPLY_NANO) * 100;
+        pill.textContent =
+          totalBurned.toLocaleString("en-US") +
+          " NANO (" +
+          pct.toFixed(2) +
+          "%)";
+      }
+
+      // Update each month card
+      completedMonths.forEach(function (m) {
+        var card = document.getElementById("burn-month-" + m);
+        var badge = document.getElementById("burn-m" + m + "-badge");
+
+        if (card) {
+          card.classList.add("burn-month-card--completed");
+        }
+        if (badge) {
+          badge.style.display = "inline-flex";
+        }
+      });
+    }
+
+    updateBurnUI();
+
   });
 </script>
 </body>
