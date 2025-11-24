@@ -1949,213 +1949,290 @@
 </div>
 
 <script>
-  // Copy contract button & all UI logic
-  document.addEventListener("DOMContentLoaded", function () {
-    var btn = document.getElementById("copy-btn");
-    var addressEl = document.getElementById("nano-address");
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // -----------------------------------
+  // CONSTANTS & BURN SCHEDULE SETTINGS
+  // -----------------------------------
+  const TOTAL_SUPPLY_NANO = 100_000_000;   // fixed total supply
+  const MONTHLY_BURN_NANO = 5_000_000;     // planned monthly burn
+  const COMPLETED_MONTHS = [1];            // months that are actually burned (update this list as burns happen)
 
-    if (btn && addressEl && navigator.clipboard) {
-      btn.addEventListener("click", function () {
-        var text = addressEl.textContent.trim();
-        navigator.clipboard
-          .writeText(text)
-          .then(function () {
-            var original = btn.textContent;
-            btn.textContent = "Copied!";
-            setTimeout(function () {
-              btn.textContent = original;
-            }, 1600);
-          })
-          .catch(function () {
-            alert("Copy failed. Please copy manually:\n" + text);
-          });
-      });
-    }
+  // -----------------------------------
+  // COPY CONTRACT BUTTON
+  // -----------------------------------
+  var btn = document.getElementById("copy-btn");
+  var addressEl = document.getElementById("nano-address");
 
-    // Simple fade-in-on-scroll using IntersectionObserver
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
+  if (btn && addressEl && navigator.clipboard) {
+    btn.addEventListener("click", function () {
+      var text = addressEl.textContent.trim();
+      navigator.clipboard
+        .writeText(text)
+        .then(function () {
+          var original = btn.textContent;
+          btn.textContent = "Copied!";
+          setTimeout(function () {
+            btn.textContent = original;
+          }, 1600);
+        })
+        .catch(function () {
+          alert("Copy failed. Please copy manually:\n" + text);
         });
-      },
-      { threshold: 0.12 }
-    );
-
-    document.querySelectorAll(".fade-in-up").forEach(function (el) {
-      observer.observe(el);
     });
+  }
 
-    // Mobile nav toggle
-    var mobileToggle = document.getElementById("mobile-toggle");
-    var mobileOverlay = document.getElementById("mobile-overlay");
-    var mobileClose = document.getElementById("mobile-close");
-
-    function closeMobile() {
-      mobileOverlay.classList.remove("is-open");
-      mobileToggle.classList.remove("is-open");
-      document.body.style.overflow = "";
-    }
-
-    if (mobileToggle && mobileOverlay) {
-      mobileToggle.addEventListener("click", function () {
-        var isOpen = mobileOverlay.classList.toggle("is-open");
-        mobileToggle.classList.toggle("is-open", isOpen);
-        document.body.style.overflow = isOpen ? "hidden" : "";
+  // -----------------------------------
+  // FADE-IN ON SCROLL
+  // -----------------------------------
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
       });
-    }
+    },
+    { threshold: 0.12 }
+  );
 
-    if (mobileClose) {
-      mobileClose.addEventListener("click", closeMobile);
-    }
+  document.querySelectorAll(".fade-in-up").forEach(function (el) {
+    observer.observe(el);
+  });
 
-    if (mobileOverlay) {
-      mobileOverlay.addEventListener("click", function (e) {
-        if (e.target === mobileOverlay) closeMobile();
-      });
-    }
+  // -----------------------------------
+  // MOBILE NAV
+  // -----------------------------------
+  var mobileToggle = document.getElementById("mobile-toggle");
+  var mobileOverlay = document.getElementById("mobile-overlay");
+  var mobileClose = document.getElementById("mobile-close");
 
-    document.querySelectorAll(".nav-mobile-links a").forEach(function (link) {
-      link.addEventListener("click", closeMobile);
+  function closeMobile() {
+    mobileOverlay.classList.remove("is-open");
+    mobileToggle.classList.remove("is-open");
+    document.body.style.overflow = "";
+  }
+
+  if (mobileToggle && mobileOverlay) {
+    mobileToggle.addEventListener("click", function () {
+      var isOpen = mobileOverlay.classList.toggle("is-open");
+      mobileToggle.classList.toggle("is-open", isOpen);
+      document.body.style.overflow = isOpen ? "hidden" : "";
     });
+  }
 
-    // Smart sticky nav: hide on scroll down, show on scroll up
-    var nav = document.getElementById("main-nav");
-    var lastScroll = window.scrollY;
+  if (mobileClose) {
+    mobileClose.addEventListener("click", closeMobile);
+  }
 
-    window.addEventListener("scroll", function () {
-      var current = window.scrollY;
-      var delta = current - lastScroll;
-
-      if (current > 80 && delta > 0) {
-        // scrolling down
-        nav.classList.add("nav-hidden");
-      } else {
-        // scrolling up
-        nav.classList.remove("nav-hidden");
-      }
-
-      lastScroll = current <= 0 ? 0 : current;
+  if (mobileOverlay) {
+    mobileOverlay.addEventListener("click", function (e) {
+      if (e.target === mobileOverlay) closeMobile();
     });
+  }
 
-    // Parallax background and logo glow (smooth version)
-    var parallaxBg = document.getElementById("parallax-bg");
-    var separators = document.querySelectorAll(".section-separator-inner");
+  document.querySelectorAll(".nav-mobile-links a").forEach(function (link) {
+    link.addEventListener("click", closeMobile);
+  });
 
-    // smooth scroll values
-    var smoothScroll = 0;
-    var targetScroll = window.scrollY || window.pageYOffset;
+  // -----------------------------------
+  // SMART STICKY NAV (HIDE ON SCROLL DOWN)
+  // -----------------------------------
+  var nav = document.getElementById("main-nav");
+  var lastScroll = window.scrollY;
 
-    function smoothUpdate() {
-      // ease towards the real scroll position
-      smoothScroll += (targetScroll - smoothScroll) * 0.08;
+  window.addEventListener("scroll", function () {
+    var current = window.scrollY;
+    var delta = current - lastScroll;
 
-      var vh = window.innerHeight;
-
-      // smooth parallax BG
-      if (parallaxBg) {
-        var factor = smoothScroll * -0.03;
-        parallaxBg.style.transform = "translate3d(0," + factor + "px,0)";
-        parallaxBg.style.opacity = 0.55 + Math.cos(smoothScroll / 800) * 0.08;
-      }
-
-      // smooth logo divider motion + glow
-      separators.forEach(function (el) {
-        var rect = el.getBoundingClientRect();
-        var center = rect.top + rect.height / 2;
-        var dist = center - vh / 2;
-        var norm = Math.max(-1, Math.min(1, dist / (vh / 2)));
-
-        var translate = -norm * 16;                // gentle up/down drift
-        var glow = 26 - Math.abs(norm) * 14;       // more glow near center
-        var opacity = 0.55 + (1 - Math.abs(norm)) * 0.45;
-
-        el.style.transform = "translate3d(0," + translate + "px,0)";
-        el.style.boxShadow = "0 0 " + glow + "px rgba(255, 111, 216, 0.55)";
-        el.style.opacity = opacity;
-      });
-
-      requestAnimationFrame(smoothUpdate);
+    if (current > 80 && delta > 0) {
+      nav.classList.add("nav-hidden"); // scrolling down
+    } else {
+      nav.classList.remove("nav-hidden"); // scrolling up
     }
 
-    window.addEventListener("scroll", function () {
-      targetScroll = window.scrollY || window.pageYOffset;
-    });
+    lastScroll = current <= 0 ? 0 : current;
+  });
 
-    window.addEventListener("resize", function () {
-      targetScroll = window.scrollY || window.pageYOffset;
+  // -----------------------------------
+  // PARALLAX BACKGROUND + LOGO SEPARATORS
+  // -----------------------------------
+  var parallaxBg = document.getElementById("parallax-bg");
+  var separators = document.querySelectorAll(".section-separator-inner");
+
+  var smoothScroll = 0;
+  var targetScroll = window.scrollY || window.pageYOffset;
+
+  function smoothUpdate() {
+    smoothScroll += (targetScroll - smoothScroll) * 0.08;
+
+    var vh = window.innerHeight;
+
+    // background
+    if (parallaxBg) {
+      var factor = smoothScroll * -0.03;
+      parallaxBg.style.transform = "translate3d(0," + factor + "px,0)";
+      parallaxBg.style.opacity = 0.55 + Math.cos(smoothScroll / 800) * 0.08;
+    }
+
+    // separators
+    separators.forEach(function (el) {
+      var rect = el.getBoundingClientRect();
+      var center = rect.top + rect.height / 2;
+      var dist = center - vh / 2;
+      var norm = Math.max(-1, Math.min(1, dist / (vh / 2)));
+
+      var translate = -norm * 16;
+      var glow = 26 - Math.abs(norm) * 14;
+      var opacity = 0.55 + (1 - Math.abs(norm)) * 0.45;
+
+      el.style.transform = "translate3d(0," + translate + "px,0)";
+      el.style.boxShadow = "0 0 " + glow + "px rgba(255, 111, 216, 0.55)";
+      el.style.opacity = opacity;
     });
 
     requestAnimationFrame(smoothUpdate);
+  }
 
-    // Live price widget using Dexscreener API
-    var priceValueEl = document.getElementById("nav-price-value");
+  window.addEventListener("scroll", function () {
+    targetScroll = window.scrollY || window.pageYOffset;
+  });
 
-    async function fetchPrice() {
-      if (!priceValueEl) return;
+  window.addEventListener("resize", function () {
+    targetScroll = window.scrollY || window.pageYOffset;
+  });
 
-      try {
-        const res = await fetch(
-          "https://api.dexscreener.com/latest/dex/tokens/0x05570200c56b220be701bdabCbdCdB37d1eB6F51"
-        );
+  requestAnimationFrame(smoothUpdate);
 
-        const data = await res.json();
-        const pair = data.pairs && data.pairs[0];
-        const price = pair && pair.priceUsd ? Number(pair.priceUsd).toFixed(6) : null;
+  // -----------------------------------
+  // NAV PRICE (DEXXSCREENER)
+  // -----------------------------------
+  var priceValueEl = document.getElementById("nav-price-value");
 
-        if (price) {
-          priceValueEl.textContent = "$" + price + " USD";
-        } else {
-          priceValueEl.textContent = "Not yet tracked";
-        }
-      } catch (e) {
-        console.error("Price fetch failed", e);
+  async function fetchPrice() {
+    if (!priceValueEl) return;
+
+    try {
+      const res = await fetch(
+        "https://api.dexscreener.com/latest/dex/tokens/0x05570200c56b220be701bdabCbdCdB37d1eB6F51"
+      );
+      const data = await res.json();
+      const pair = data.pairs && data.pairs[0];
+      const price = pair && pair.priceUsd ? Number(pair.priceUsd).toFixed(6) : null;
+
+      if (price) {
+        priceValueEl.textContent = "$" + price + " USD";
+      } else {
         priceValueEl.textContent = "Not yet tracked";
       }
+    } catch (e) {
+      console.error("Price fetch failed", e);
+      priceValueEl.textContent = "Not yet tracked";
+    }
+  }
+
+  fetchPrice();
+  setInterval(fetchPrice, 60_000);
+
+  // -----------------------------------
+  // BURN SCHEDULE UI + LIVE SUPPLY
+  // -----------------------------------
+  function updateBurnUI(burnOverride) {
+    let totalBurned;
+
+    if (typeof burnOverride === "number" && Number.isFinite(burnOverride) && burnOverride >= 0) {
+      totalBurned = burnOverride;
+    } else {
+      totalBurned = COMPLETED_MONTHS.length * MONTHLY_BURN_NANO;
     }
 
-    fetchPrice();
-    setInterval(fetchPrice, 60000); // refresh every 60s
+    if (!Number.isFinite(totalBurned) || totalBurned < 0) {
+      totalBurned = 0;
+    }
 
-    // ---- BURN SCHEDULE TRACKER ----
-    // Uses TOTAL_SUPPLY_NANO and MONTHLY_BURN_NANO from the head script
+    // Pill at top of burn section
+    var pill = document.getElementById("burn-total-display");
+    if (pill) {
+      var pct = (totalBurned / TOTAL_SUPPLY_NANO) * 100;
+      pill.textContent =
+        totalBurned.toLocaleString("en-US") +
+        " NANO (" +
+        pct.toFixed(2) +
+        "%)";
+    }
 
-    // Add the month numbers that are completed here, e.g. [1, 2, 3]
-    var completedMonths = [1]; // <-- update this as burns are done
+    // Month cards completed
+    COMPLETED_MONTHS.forEach(function (m) {
+      var card = document.getElementById("burn-month-" + m);
+      var badge = document.getElementById("burn-m" + m + "-badge");
 
-    function updateBurnUI() {
-      var totalBurned = completedMonths.length * MONTHLY_BURN_NANO;
+      if (card) {
+        card.classList.add("burn-month-card--completed");
+      }
+      if (badge) {
+        badge.style.display = "inline-flex";
+      }
+    });
+  }
 
-      // Update pill
-      var pill = document.getElementById("burn-total-display");
-      if (pill) {
-        var pct = (totalBurned / TOTAL_SUPPLY_NANO) * 100;
-        pill.textContent =
-          totalBurned.toLocaleString("en-US") +
-          " NANO (" +
-          pct.toFixed(2) +
-          "%)";
+  async function fetchLiveSupply() {
+    try {
+      const res = await fetch(
+        "https://api.basescan.org/api?module=stats&action=tokensupply&contractaddress=0x05570200c56b220be701bdabCbdCdB37d1eB6F51"
+      );
+      const data = await res.json();
+
+      if (!data || typeof data.result !== "string") {
+        console.warn("Unexpected BaseScan response", data);
+        updateBurnUI(); // fall back to schedule only
+        return;
       }
 
-      // Update each month card
-      completedMonths.forEach(function (m) {
-        var card = document.getElementById("burn-month-" + m);
-        var badge = document.getElementById("burn-m" + m + "-badge");
+      const rawSupply = Number(data.result) / 1e18;
+      if (!Number.isFinite(rawSupply)) {
+        console.warn("Raw supply is not finite", rawSupply);
+        updateBurnUI();
+        return;
+      }
 
-        if (card) {
-          card.classList.add("burn-month-card--completed");
-        }
-        if (badge) {
-          badge.style.display = "inline-flex";
-        }
-      });
+      // Update hero card total supply
+      var supplyEl = document.getElementById("live-total-supply");
+      if (supplyEl) {
+        supplyEl.textContent = rawSupply.toLocaleString("en-US");
+      }
+
+      // Use on-chain difference as burned amount (clamped to >= 0)
+      const burnedFromChain = Math.max(0, TOTAL_SUPPLY_NANO - rawSupply);
+      updateBurnUI(burnedFromChain);
+    } catch (err) {
+      console.error("Supply fetch failed:", err);
+      updateBurnUI();
     }
+  }
 
-    updateBurnUI();
+  // initial render + polling
+  updateBurnUI();          // show at least schedule-based number
+  fetchLiveSupply();       // then try to refine from chain
+  setInterval(fetchLiveSupply, 10_000); // refresh every 10s
+
+  // -----------------------------------
+  // EXTRA PADDING AROUND BURN SEPARATOR
+  // (so you don't have to touch CSS)
+  // -----------------------------------
+  document.querySelectorAll(".section-separator").forEach(function (el) {
+    el.style.paddingTop = "40px";
+    el.style.paddingBottom = "32px";
   });
+
+  var burnSection = document.getElementById("burn-schedule");
+  if (burnSection) {
+    burnSection.style.paddingTop = "40px";
+  }
+
+  var tokenSection = document.getElementById("token");
+  if (tokenSection) {
+    tokenSection.style.paddingBottom = "40px";
+  }
+});
 </script>
-</body>
-</html>
