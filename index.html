@@ -2,49 +2,62 @@
 <html lang="en">
 <head>
   <script>
-// -------------------------------
-//  FIXED CONSTANTS (do not edit)
-// -------------------------------
-const TOTAL_SUPPLY_NANO = 100_000_000;
-const MONTHLY_BURN_NANO = 5_000_000;
+  // --------------------------------------
+  // LIVE TOKEN SUPPLY FETCH (Basescan)
+  // --------------------------------------
+  async function fetchLiveSupply() {
+    try {
+      const res = await fetch(
+        "https://api.basescan.org/api?module=stats&action=tokensupply&contractaddress=0x05570200c56b220be701bdabcbdcdb37d1eb6f51"
+      );
 
-// This array will store months you’ve completed burns (0 = January)
-var completedMonths = [];
-
-// --------------------------------------
-//  LIVE TOKEN SUPPLY FETCH (Basescan)
-// --------------------------------------
-async function fetchLiveSupply() {
-  try {
-    const res = await fetch(
-      "https://api.basescan.org/api?module=stats&action=tokensupply&contractaddress=0x05570200c56b220be701bdabCbdCdB37d1eB6F51"
-    );
-
-    const data = await res.json();
-
-    if (data.result) {
-      const rawSupply = Number(data.result) / 1e18;
+      const data = await res.json();
 
       const supplyEl = document.getElementById("live-total-supply");
-      const burnEl = document.getElementById("burn-total-display");
+      const burnEl   = document.getElementById("burn-total-display");
 
-      if (supplyEl) supplyEl.textContent = rawSupply.toLocaleString("en-US");
+      // If we didn't get a clean numeric result, bail out (keeps NaN from showing)
+      if (!data.result || !supplyEl) {
+        console.error("Unexpected tokensupply result:", data);
+        return;
+      }
 
-      const burned = TOTAL_SUPPLY_NANO - rawSupply;
-      if (burnEl)
-        burnEl.textContent =
-          burned.toLocaleString("en-US") +
-          " NANO (" +
-          ((burned / TOTAL_SUPPLY_NANO) * 100).toFixed(2) +
-          "%)";
+      const raw = Number(data.result);
+
+      if (!isFinite(raw) || raw <= 0) {
+        console.error("Non-numeric tokensupply result:", data.result);
+        return;
+      }
+
+      // Basescan returns 18-decimals integer
+      const currentSupply = raw / 1e18;
+
+      // ✅ Update hero card
+      supplyEl.textContent = currentSupply.toLocaleString("en-US");
+
+      // ✅ Update burn pill (uses the global TOTAL_SUPPLY_NANO = 100_000_000)
+      if (typeof TOTAL_SUPPLY_NANO === "number" && burnEl) {
+        const burned = TOTAL_SUPPLY_NANO - currentSupply;
+
+        if (burned >= 0) {
+          burnEl.textContent =
+            burned.toLocaleString("en-US") +
+            " NANO (" +
+            ((burned / TOTAL_SUPPLY_NANO) * 100).toFixed(4) +
+            "%)";
+        }
+      }
+    } catch (err) {
+      console.error("Supply fetch failed:", err);
     }
-  } catch (err) {
-    console.error("Supply fetch failed:", err);
   }
-}
 
-setInterval(fetchLiveSupply, 10000);
-fetchLiveSupply();
+  // Run once on load + every 60s (no need to hammer the API)
+  document.addEventListener("DOMContentLoaded", function () {
+    fetchLiveSupply();
+    setInterval(fetchLiveSupply, 60000);
+  });
+
 </script>
 
   <meta charset="UTF-8" />
