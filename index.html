@@ -1,6 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+// -------------------------------
+//  FIXED CONSTANTS (do not edit)
+// -------------------------------
+const TOTAL_SUPPLY_NANO = 100_000_000;
+const MONTHLY_BURN_NANO = 5_000_000;
+
+// This array will store months you’ve completed burns (0 = January)
+var completedMonths = [];
+
+// --------------------------------------
+//  LIVE TOKEN SUPPLY FETCH (Basescan)
+// --------------------------------------
+async function fetchLiveSupply() {
+  try {
+    const res = await fetch(
+      "https://api.basescan.org/api?module=stats&action=tokensupply&contractaddress=0x05570200c56b220be701bdabCbdCdB37d1eB6F51"
+    );
+
+    const data = await res.json();
+
+    if (data.result) {
+      const rawSupply = Number(data.result) / 1e18;
+
+      const supplyEl = document.getElementById("live-total-supply");
+      const burnEl = document.getElementById("burn-total-display");
+
+      if (supplyEl) supplyEl.textContent = rawSupply.toLocaleString("en-US");
+
+      const burned = TOTAL_SUPPLY_NANO - rawSupply;
+      if (burnEl)
+        burnEl.textContent =
+          burned.toLocaleString("en-US") +
+          " NANO (" +
+          ((burned / TOTAL_SUPPLY_NANO) * 100).toFixed(2) +
+          "%)";
+    }
+  } catch (err) {
+    console.error("Supply fetch failed:", err);
+  }
+}
+
+setInterval(fetchLiveSupply, 10000);
+fetchLiveSupply();
+</script>
+
   <meta charset="UTF-8" />
   <title>Nanotech Protocol · $NANO on Base – The Future of Biology Is Programmable</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -1276,10 +1322,10 @@
             </div>
           </div>
           <div class="hero-card-mid">
-            <div class="stat-row">
-              <div class="stat-label">Total supply</div>
-              <div class="stat-value">100,000,000 NANO</div>
-            </div>
+         <div class="stat-value">
+    <span id="live-total-supply">Loading...</span> NANO
+</div>
+
             <div class="stat-row">
               <div class="stat-label">Decimals</div>
               <div class="stat-value">18</div>
@@ -2121,6 +2167,15 @@ setInterval(fetchPrice, 60000); // refresh every 60s
     }
 
     updateBurnUI();
+//------------------------------------------------
+// HERO CARD SUPPLY UPDATE (front page total supply)
+//------------------------------------------------
+function updateHeroSupply(total) {
+    var el = document.getElementById("hero-total-supply");
+    if (el) {
+        el.textContent = total.toLocaleString("en-US");
+    }
+}
 
   });
 </script>
