@@ -1277,51 +1277,114 @@
           </div>
         </div>
 
-        <div class="hero-card-wrapper fade-in-up">
-          <div class="hero-card" id="contract">
-            <div class="hero-card-top">
-              <div class="pill">
-                <span class="status-dot"></span>
-                <span>$NANO · LIVE ON BASE</span>
-              </div>
-              <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.12em; color:var(--muted-strong);">
-                Meme · Biotech · AI
-              </div>
-            </div>
-            <div class="hero-card-mid">
-              <div class="stat-row">
-                <div class="stat-label">Total supply</div>
-                <div class="stat-value">100,000,000 NANO</div>
-              </div>
-              <div class="stat-row">
-                <div class="stat-label">Decimals</div>
-                <div class="stat-value">18</div>
-              </div>
-              <div class="stat-row">
-                <div class="stat-label">Network</div>
-                <div class="stat-value">Base (L2)</div>
-              </div>
-            </div>
-            <div class="contract-block">
-              <div style="font-size:10px; text-transform:uppercase; letter-spacing:0.16em; color:var(--muted-strong);">
-                Official contract address
-              </div>
-              <div class="contract-row">
-                <div class="contract-address" id="nano-address">
-                  0x05570200c56b220be701bdabCbdCdB37d1eB6F51
-                </div>
-                <button class="btn-tiny" id="copy-btn" type="button">
-                  <span>⧉</span> Copy
-                </button>
-              </div>
-            </div>
-            <div class="hero-card-footer">
-              <div>Deployer: community founder</div>
-              <div>Renounce &amp; memes &gt; promises</div>
-            </div>
-          </div>
-        </div>
-      </div>
+       .nano-min-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 26px 24px 22px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 0 40px rgba(0,0,0,0.25);
+}
+
+.nano-min-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.nano-min-dot {
+  width: 8px;
+  height: 8px;
+  background: #4ade80;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.8);
+}
+
+.nano-min-title {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.85);
+}
+
+.nano-min-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.nano-min-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.86rem;
+  color: rgba(255,255,255,0.72);
+}
+
+.nano-min-row strong {
+  color: rgba(255,255,255,0.95);
+  font-weight: 500;
+}
+
+.nano-min-divider {
+  height: 1px;
+  margin: 20px 0 18px;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0.28),
+    rgba(255,255,255,0)
+  );
+}
+
+.nano-min-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nano-min-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.55);
+}
+
+.nano-min-address-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.nano-min-address {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: rgba(255,255,255,0.9);
+  font-size: 0.78rem;
+}
+
+.nano-min-copy {
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.18);
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+
+.nano-min-copy:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-1px);
+}
     </section>
 
     <!-- STRIP -->
